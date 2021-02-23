@@ -10,3 +10,4 @@
 9. Utcheckning vyn
 10. Inloggad kund
 11. Footern, vilket är det lättaste, då i princip 99% är bara väldigt basic design
+12. Började diskutera detta med API samt gruppens förmåga att lösa projektet.
