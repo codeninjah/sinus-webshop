@@ -2,7 +2,13 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/about">About</router-link> |
+      <router-link to="/checkout">Checkout</router-link> |
+      <router-link to="/kundkorg">Kundkorg</router-link> |
+      <router-link to="/loggin">LoggIn</router-link> |
+      <router-link to="/myaccount">My Account</router-link> |
+      <router-link to="/produkt">Produkt</router-link> |
+      <router-link to="/produktlista">Produktlista</router-link> |
     </div>
     <router-view/>
   </div>

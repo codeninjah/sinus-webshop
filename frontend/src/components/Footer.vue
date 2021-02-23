@@ -1,17 +1,23 @@
 <template>
     <div class="wrapper">
-        <h1>My Account</h1>
+        <p>Test</p>
     </div>
 </template>
 
 
 <script>
 export default {
-    name: "MyAccount"
+    name: "Footer"
 }
 </script>
 
 
 <style scoped>
+
+.wrapper {
+    height: 300px;
+    background-color: black;
+    color: white;
+}
 
 </style>
