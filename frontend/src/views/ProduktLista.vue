@@ -19,31 +19,31 @@
 </template>
 
 
-<script>
-import axios from 'axios';
+// <script>
+// import axios from 'axios';
 
-export default {
-    data() {
-        return {
-            posts: [],
-            errors: []
-        }
-    },
+// export default {
+//     data() {
+//         return {
+//             posts: [],
+//             errors: []
+//         }
+//     },
 
-    name: "ProduktLista",
+//     name: "ProduktLista",
     
-    created() {
-            axios.get('http://localhost:5000/database/productsSeed.json')
-            .then(response => {
-                this.posts = response.data
-            })
-            .catch(e => {
-                this.errors.push(e)
-            })
-         }
-}
+//     created() {
+//             axios.get('http://localhost:5000/database/productsSeed.json')
+//             .then(response => {
+//                 this.posts = response.data
+//             })
+//             .catch(e => {
+//                 this.errors.push(e)
+//             })
+//          }
+// }
 
-</script>
+// </script>
 
 
 <style scoped>
