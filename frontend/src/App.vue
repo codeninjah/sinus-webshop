@@ -42,7 +42,7 @@ export default {};
 <style lang="scss">
 #app {
   min-height: 50px;
-  background: lightcyan;
+ 
 
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -52,16 +52,14 @@ export default {};
 }
 
 #nav {
-  padding: 20px;
+  padding: 50px;
   background-image: url(../src/assets/header-background.jpg);
 
   a {
     font-weight: bold;
     color: orange;
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+    
   }
 }
 

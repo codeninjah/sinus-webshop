@@ -1,6 +1,9 @@
 <template>
   <div class="home">
-    <button>klick me</button>
+    <div class="wrapper">
+    <a id="triangle" href="#"></a>
+
+  </div>
   </div>
 </template>
 
@@ -19,10 +22,20 @@ export default {
 
 <style lang="scss" scoped>
 
-button {
-  border-radius: 50px;
+
+.wrapper {
+  display: flex;
+  justify-content:center;
 }
 
 
+#triangle{
+  
+	width: 0;
+	height: 0;
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+	border-top: 50px solid black;
+}
 
 </style>
