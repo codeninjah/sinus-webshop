@@ -5,7 +5,7 @@ import Checkout from '../views/Checkout.vue'
 import KundKorg from '../views/KundKorg.vue'
 import LoggIn from '../views/LoggIn.vue'
 import MyAccount from '../views/MyAccount.vue'
-import Produkt from '../views/Produkt.vue'
+import ProduktInfo from '../views/ProduktInfo.vue'
 import ProduktLista from '../views/ProduktLista.vue'
 
 Vue.use(VueRouter)
@@ -45,9 +45,9 @@ const routes = [
     component: MyAccount
   },
   {
-    path: '/produkt',
-    name: 'Produkt',
-    component: Produkt
+    path: '/products/:id',
+    name: 'ProduktInfo',
+    component: ProduktInfo
   },
   {
     path: '/produktlista',
