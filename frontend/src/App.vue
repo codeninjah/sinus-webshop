@@ -24,6 +24,9 @@
       <p>CHRISTMAS SALE <br />60%OFF</p>
     </div>
     <router-view />
+    <footer class="footer">
+       <img src="@/assets/footer-icons.png" alt="" />
+    </footer>
   </div>
 </template>
 
@@ -80,7 +83,7 @@ export default {};
   display: flex;
   margin: 5px;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
   width: 200px;
   
 }
@@ -96,8 +99,25 @@ export default {};
   display: flex;
   justify-content: space-evenly;
 }
+
+.app{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 html,
 body {
+  
   background-color: #b72929;
-}
+  margin:0%;
+  padding:0%;
+  }
+
+
+ .footer {
+   position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;  
+  }
 </style>
