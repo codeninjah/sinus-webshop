@@ -5,10 +5,11 @@
 </template>
 
 <script>
-import Produkt from "@/views/Produkt.vue";
+import Produkt from "@/components/Produkt.vue";
 
 export default {
   components: { Produkt },
+
   computed: {
     product() {
       let id = this.$route.params.id;
@@ -16,6 +17,7 @@ export default {
       return product;
     },
   },
+
 };
 </script>
 

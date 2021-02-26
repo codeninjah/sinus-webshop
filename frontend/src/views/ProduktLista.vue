@@ -21,6 +21,9 @@
                 {{ post.title }}
                 {{ post.price }}
 
+                {{post._id}}
+                {{post.id}} <!--Printas ej -->
+
         </li>
       </ul>
 
@@ -40,10 +43,12 @@
 import axios from 'axios';
 
 export default {
+
+    //här kan det vara så att man inte skickat rätt data som ska tas emot av Produkt-componenten via props
     data() {
         return {
             posts: [],
-            errors: []
+            errors: [],
         }
     },
 
