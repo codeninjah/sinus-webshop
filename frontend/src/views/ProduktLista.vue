@@ -1,12 +1,29 @@
 <template>
     <div class="wrapper">
         <h1>Produkt Lista</h1>
+
+        <!--
         <ul v-if="posts && posts.length">
-            <li v-for="post of posts"
-            :key = "post">
-                <p>{{post.title}} {{post.price}}</p>
+            <li v-for="(post, index) of posts"
+            :key = "post"
+            index = index>
+                <a href="http://localhost:5000/api/products/" + {{post._id}}><p v-on:click="popUp(index)">{{post.title}} {{post.price}}</p></a>
             </li>
         </ul>
+        -->
+
+        <ul v-if="posts && posts.length">
+        <li
+            v-for="post in posts"
+            :key="post.id"
+            @click="$router.push(`products/${post._id}`)"
+            >
+                {{ post.title }}
+                {{ post.price }}
+
+        </li>
+      </ul>
+
 
         <ol v-if="errors && errors.length">
             <li v-for="error of errors"
@@ -31,6 +48,16 @@ export default {
     },
 
     name: "ProduktLista",
+
+    /*
+    methods: {
+        popUp(index){
+            this.index = index
+            alert(index)
+            console.log(index.longDesc) //undefined
+        }
+    },
+    */
     
     created() {
             //axios.get('http://localhost:5000/database/productsSeed.json')
@@ -41,7 +68,13 @@ export default {
             .catch(e => {
                 this.errors.push(e)
             })
-         }
+         },
+
+    computed: {
+        products() {
+            return this.$store.state.products;
+        },
+    },
 }
 
 </script>
