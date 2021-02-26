@@ -4,16 +4,16 @@
         <ul v-if="posts && posts.length">
             <li v-for="post of posts"
             :key = "post">
-                <p>{{post.title}}</p>
+                <p>{{post.title}} {{post.price}}</p>
             </li>
         </ul>
 
-        <ul v-if="errors && errors.length">
+        <ol v-if="errors && errors.length">
             <li v-for="error of errors"
             :key = "error">
                 <p>{{error.message}}</p>
             </li>
-        </ul>
+        </ol>
 
     </div>    
 </template>
@@ -33,7 +33,8 @@ export default {
     name: "ProduktLista",
     
     created() {
-            axios.get('http://localhost:5000/database/productsSeed.json')
+            //axios.get('http://localhost:5000/database/productsSeed.json')
+            axios.get("http://localhost:5000/api/products/")
             .then(response => {
                 this.posts = response.data
             })
@@ -47,5 +48,9 @@ export default {
 
 
 <style scoped>
+
+ol {
+    list-style-type: georgian;
+}
 
 </style>
