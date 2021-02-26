@@ -1,9 +1,13 @@
 <template>
   <div id="app">
-    <Navigation />
+   
     <div class="overNav">
       <img src="@/assets/sinus-logo.png" alt="">
+
+      <div class="totheright">
+        <img src="@/assets/cart.png" alt="">
         <img src="@/assets/wiggly-sinus.png" alt="">
+        </div>
     </div>
     <div id="nav">
       <router-link to="/">Home</router-link> |
@@ -72,6 +76,14 @@ export default {
   background-color: rgb(31, 29, 29);
   color: white;
   height: 2.5rem;
+
+}
+
+.totheright{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  
 
 }
 
