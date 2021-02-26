@@ -1,13 +1,18 @@
 <template>
     <div class="wrapper">
         <h1>My Account</h1>
-    </div>
+        
+
+        </div>
 </template>
 
 
 <script>
+
+
 export default {
-    name: "MyAccount"
+    name: "MyAccount",
+   
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <p>Test</p>
+        <img class="footer.img" src="@/assets/footer-icons.png" alt="" />
     </div>
 </template>
 
@@ -15,9 +15,10 @@ export default {
 <style scoped>
 
 .wrapper {
-    height: 300px;
-    background-color: black;
-    color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;     
 }
 
 </style>
