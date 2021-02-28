@@ -2,9 +2,17 @@
   <div class="wrapper">
     <div id="nav">
       <div class="overNav">
-        <img src="@/assets/sinus-logo.png" alt="" />
+       
+        <div class="totheleft">
+           <img src="@/assets/sinus-logo.png" alt="" />
+           <router-link to="/" class="home-icon"
+          ><img class="home-icon" src="@/assets/home-icon.png" alt=""
+        /></router-link>
+        
+        </div>
 
         <section class="totheright">
+           
           <img class="search" src="@/assets/magnify.png" alt="" />
           <router-link to="/myaccount" class="account-icon"
             ><img class="account-icon" src="@/assets/user.png" alt=""
@@ -16,7 +24,7 @@
         </section>
       </div>
 
-      <router-link to="/">Home</router-link> |
+      
 
       <router-link to="/checkout">Checkout</router-link> |
       <router-link to="/loggin">LoggIn</router-link> | |
@@ -63,12 +71,23 @@ export default {
   justify-content: space-between;
   width: 200px;
 }
+.totheleft {
+  display: flex;
+  margin: 2px;
+  flex-direction: row;
+  justify-content: inherit;
+  width: 200px;
+}
 .account-icon {
   max-width: 30px;
   max-height: 30px;
 }
 
 .cart-icon {
+  max-width: 30px;
+  max-height: 30px;
+}
+.home-icon {
   max-width: 30px;
   max-height: 30px;
 }
@@ -79,7 +98,7 @@ export default {
 
 #nav {
   height: 200px;
-  
+
   background-image: url(../../src/assets/header-background.png);
   background-size: cover;
 }

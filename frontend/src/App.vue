@@ -3,7 +3,6 @@
     <div class="wrapper">
       <Navigation />
       <Router-view />
-      
       <Footer />
     </div>
   </div>
@@ -28,7 +27,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   
-  
+  min-width: 800px;
+  min-height: 400px;
 }
 
 html,
