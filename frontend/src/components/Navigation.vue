@@ -1,25 +1,91 @@
 <template>
-    <div class="wrapper">
-        <div class="navbar">
-            <img src="@/assets/sinus-logo.svg">
-            <img src="@/assets/icon-user-black.svg">
-        </div>
-    </div>
-</template>
+  <div class="wrapper">
+    <div id="nav">
+      <div class="overNav">
+        <img src="@/assets/sinus-logo.png" alt="" />
 
+        <section class="totheright">
+          <img class="search" src="@/assets/magnify.png" alt="" />
+          <router-link to="/myaccount" class="account-icon"
+            ><img class="account-icon" src="@/assets/user.png" alt=""
+          /></router-link>
+          <router-link to="/kundkorg" class="cart-icon"
+            ><img class="cart-icon" src="@/assets/cart-white.png" alt=""
+          /></router-link>
+          <img src="@/assets/wiggly-sinus.png" alt="" />
+        </section>
+      </div>
+
+      <router-link to="/">Home</router-link> |
+
+      <router-link to="/checkout">Checkout</router-link> |
+      <router-link to="/loggin">LoggIn</router-link> | |
+      <router-link to="/produkt">Produkt</router-link> |
+      <router-link to="/produktlista">Produktlista</router-link> |
+    </div>
+    <div class="underNav">
+      <p>CHRISTMAS SALE <br />60%OFF</p>
+    </div>
+  </div>
+</template>
 
 <script>
 export default {
-    name: "Navigation"
-}
+  name: "Navigation",
+};
 </script>
 
-
-<style scoped>
-
-img {
-    height: 100px;
-    width: auto;
+<style lang="scss">
+.underNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: rgb(31, 29, 29);
+  font-weight: bold;
+  color: red;
+  height: 4rem;
 }
 
+.overNav {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+  background-color: rgb(31, 29, 29);
+  color: white;
+  height: 2.5rem;
+}
+
+.totheright {
+  display: flex;
+  margin: 5px;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 200px;
+}
+.account-icon {
+  max-width: 30px;
+  max-height: 30px;
+}
+
+.cart-icon {
+  max-width: 30px;
+  max-height: 30px;
+}
+.search {
+  max-width: 30px;
+  max-height: 30px;
+}
+
+#nav {
+  height: 200px;
+  
+  background-image: url(../../src/assets/header-background.png);
+  background-size: cover;
+}
+
+a {
+  font-weight: bold;
+  color: orange;
+}
 </style>

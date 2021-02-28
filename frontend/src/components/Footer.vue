@@ -1,6 +1,6 @@
 <template>
-    <div class="wrapper">
-        <img class="footer.img" src="@/assets/footer-icons.png" alt="" />
+    <div class="footerW">
+        <img class="footer" src="@/assets/footer-icons.png" alt="" />
     </div>
 </template>
 
@@ -12,13 +12,24 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
 
-.wrapper {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 2.5rem;     
+
+
+.footerW {
+   display: flex;
+   flex-direction: column;
+   
+  
+
+}
+
+.footer{
+    margin-top: 100%;
+   
+   
+   
+  
 }
 
 </style>
