@@ -8,14 +8,15 @@
       <li
         v-for="post in posts"
         :key="post.imgFile"
-        @click="$router.push(`products/${post.imgFile}`)"
+        
       >
-      <img :src="post.imgFile">
+     
+   <img v-bind:src="require('../../src/assets/hoodie-fire.png')" />
         
 
        {{ post.imgFile}}
 
-       {{ post._id}}
+       
 
         <!--Printas ej -->
       </li>
@@ -49,10 +50,12 @@ export default {
   },
 
   computed: {
+    
     products() {
       return this.$store.state.products;
     },
   },
+ 
 };
 </script>
 
@@ -66,8 +69,8 @@ export default {
 #triangle {
   width: 0;
   height: 0;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
   border-top: 50px solid black;
 }
 </style>
