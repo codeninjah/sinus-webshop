@@ -3,7 +3,7 @@
         <form>
             <input type="text" placeholder="Your Email">
             <input type="password" placeholder="Your password">
-            <input type="submit">
+            <input type="submit" value="Logg In">
         </form>
         <label>Not a user yet?</label>
         <button>Register</button>
