@@ -5,20 +5,17 @@
     </div>
 
     <ul class="hoodieTab" v-if="posts && posts.length">
-      <li
+      <router-link 
         v-for="post in posts"
-        :key="post.imgFile"
-        @click="$router.push(`products/${post.imgFile}`)"
+        :key="post._id"
+        :to= "`products/${post.imgFile}`"
       >
-      <img :src="post.imgFile">
-        
+        <img :src="require(`@/assets/${post.imgFile}`)" />
 
-       {{ post.imgFile}}
-
-       {{ post._id}}
+        {{ post.imgFile }}
 
         <!--Printas ej -->
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
