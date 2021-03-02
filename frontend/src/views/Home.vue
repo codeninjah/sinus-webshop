@@ -20,9 +20,11 @@
     <ul class="imglist" v-if="posts && posts.length">
 
       <router-link class="listItems" 
+      
         v-for="post in posts"
         :key="post._id"
         :to="`products/${post.imgFile}`"
+        
       >
         <img :src="require(`@/assets/${post.imgFile}`)" />
 
