@@ -3,20 +3,22 @@
     <div class="wrapper">
       <a id="triangle" href="#"></a>
     </div>
-
+      <section class="listWrapper">
     <ul class="imglist" v-if="posts && posts.length">
-      <router-link 
+      <router-link class="listItems" 
         v-for="post in posts"
         :key="post._id"
         :to="`products/${post.imgFile}`"
       >
         <img :src="require(`@/assets/${post.imgFile}`)" />
 
-        {{post.imgFile}}
+        {{post.title}}
+        
 
         <!--Printas ej -->
       </router-link>
     </ul>
+    </section>
   </div>
 </template>
 
@@ -72,6 +74,33 @@ export default {
 
 .imglist {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+      height: 500px;
+      margin:0%;
+      padding: 0%;
 }
+
+.listItems {
+  
+      display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 200px;
+    text-decoration: none;
+    background: repeating-radial-gradient(#ffffff08, transparent 100px);
+    overflow: hidden;
+    border-radius: 6%;
+    margin: auto;
+    padding: 5px;
+    box-shadow: 1px;
+    box-shadow: 0px 0 1px 0px #0000003d;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.listWrapper {
+  min-height: 800px;
+  margin:2%
+}
+
 </style>
