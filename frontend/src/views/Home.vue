@@ -4,7 +4,7 @@
       <a id="triangle" href="#"></a>
     </div>
 
-    <ul class="hoodieTab" v-if="posts && posts.length">
+    <ul class="imglist" v-if="posts && posts.length">
       <router-link 
         v-for="post in posts"
         :key="post._id"
@@ -68,5 +68,10 @@ export default {
   border-left: 30px solid transparent;
   border-right: 30px solid transparent;
   border-top: 50px solid black;
+}
+
+.imglist {
+  display: flex;
+  flex-direction: column;
 }
 </style>
