@@ -68,15 +68,8 @@ export default {
     openLightBox() {
       const open = document.getElementById("myModal");
       open.style.display = "block";
-<<<<<<< HEAD
 
       
-=======
-      //console.log(images)
-
-      //console.log(this.$root.imgArray)
-      //const array = this.$root.imgArray
->>>>>>> 540854b86fa5c81afc61efa9f958f54168e670d2
     },
 
     closeLightBox() {
