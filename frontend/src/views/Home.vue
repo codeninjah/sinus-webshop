@@ -27,7 +27,7 @@
           {{ post.title }}
 
           <!--Printas ej -->
-        </li>WZ
+        </li>
       </ul>
     </section>
   </div>
@@ -37,9 +37,12 @@
 // @ is an alias to /src
 import axios from "axios";
 import Modal from "@/components/Modal.vue"
+
 export default {
   name: "Home",
+
   components: {Modal},
+
   data() {
     return {
       clickedProduct: null,
@@ -65,7 +68,6 @@ export default {
     openLightBox() {
       const open = document.getElementById("myModal");
       open.style.display = "block";
-
       //console.log(images)
 
       //console.log(this.$root.imgArray)

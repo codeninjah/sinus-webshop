@@ -12,6 +12,15 @@
 <script>
 export default {
     name: "Modal",
+
+    props: ['clickedProduct'],
+
+    created: function () {
+            //clickedProduct = "ALEX"
+            console.log('user data from parent component:')
+            console.log(this.clickedProduct) //prints out "undefined"
+        },
+
     methods: {
     openLightBox() {
       const open = document.getElementById("myModal");
