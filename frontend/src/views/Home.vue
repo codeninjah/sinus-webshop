@@ -1,7 +1,7 @@
 <template>
   <div class="home">
 
-    <div class="wrapper">
+    <div class="wrapper" @click="openLightBox">
       <a id="triangle" href="#"></a>
     </div>
 
@@ -19,19 +19,20 @@
 
     <ul class="imglist" v-if="posts && posts.length">
 
+    <span v-on:click="openLightBox()">CODENINJAH IN THE HOUSE</span>
+
       <router-link class="listItems" 
         v-for="post in posts"
         :key="post._id"
         :to="`products/${post.imgFile}`"
-      >
-        <img :src="require(`@/assets/${post.imgFile}`)" />
-
+      >  
+       
+         <img :src="require(`@/assets/${post.imgFile}`)" />
         {{post.title}}
-        
-        
+  
         <!--Printas ej -->
       </router-link>
-
+    
     </ul>
     </section>
 
