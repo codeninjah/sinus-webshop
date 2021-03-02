@@ -7,6 +7,7 @@ import LoggIn from '../views/LoggIn.vue'
 import MyAccount from '../views/MyAccount.vue'
 import ProduktInfo from '../views/ProduktInfo.vue'
 import ProduktLista from '../views/ProduktLista.vue'
+import AuthDemo from '../views/AuthDemo.vue'
 
 Vue.use(VueRouter)
 
@@ -46,6 +47,11 @@ const routes = [
     path: '/produktlista',
     name: 'ProduktLista',
     component: ProduktLista
+  },
+  {
+    path: '/authdemo',
+    name: 'AuthDemo',
+    component: AuthDemo
   },
 ]
 
