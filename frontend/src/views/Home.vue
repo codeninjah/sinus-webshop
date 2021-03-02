@@ -46,10 +46,12 @@ export default {
   },
 
   computed: {
+    
     products() {
       return this.$store.state.products;
     },
   },
+ 
 };
 </script>
 
@@ -63,8 +65,8 @@ export default {
 #triangle {
   width: 0;
   height: 0;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
   border-top: 50px solid black;
 }
 </style>
