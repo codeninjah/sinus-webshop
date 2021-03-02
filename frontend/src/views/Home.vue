@@ -8,11 +8,11 @@
       <router-link 
         v-for="post in posts"
         :key="post._id"
-        :to= "`products/${post.imgFile}`"
+        :to="`products/${post.imgFile}`"
       >
         <img :src="require(`@/assets/${post.imgFile}`)" />
 
-        {{ post.imgFile }}
+        {{post.imgFile}}
 
         <!--Printas ej -->
       </router-link>
