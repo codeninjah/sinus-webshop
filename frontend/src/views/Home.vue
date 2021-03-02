@@ -66,17 +66,14 @@ export default {
       const open = document.getElementById("myModal");
       open.style.display = "block";
 
-      //console.log(images)
-
-      //console.log(this.$root.imgArray)
-      //const array = this.$root.imgArray
+      
     },
 
     closeLightBox() {
       const open = document.getElementById("myModal");
       open.style.display = "none";
 
-      //alert("Bra!")
+      
     },
   },
 
