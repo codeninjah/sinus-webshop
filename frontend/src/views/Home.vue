@@ -82,11 +82,6 @@ export default {
       const open = document.getElementById("myModal");
       open.style.display = "block";
 
-<<<<<<< HEAD
-=======
-
-      //this.modalLongDesc = product.longDesc
->>>>>>> be41baf7afccd80e1d085dae433804b1b6fee083
       
     },
 
