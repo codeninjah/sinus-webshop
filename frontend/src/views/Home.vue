@@ -1,39 +1,44 @@
 <template>
   <div class="home">
-    
     <div class="wrapper" @click="openLightBox">
       <a id="triangle" href="#"></a>
     </div>
 
-    <!-- <div id="myModal" class="lightbox nodisplay">
-      <span class="close cursor" v-on:click="closeLightBox()">ALEX</span>
-      <div class="lightbox-content">
-        <img
-          src="https://live.staticflickr.com/8515/8458051641_8563c83111.jpg"
-        />
-      </div>
-    </div> -->
-
     <section class="listWrapper">
-
       <ul class="imglist" v-if="posts && posts.length">
-        <span v-on:click="openLightBox()">CODENINJAH IN THE HOUSE</span>
-        
-
         <li
+          @click="select(post)"
           class="listItems"
           v-for="post in posts"
-          :key="post._id"      
+          :key="post._id"
         >
-          <demo v-bind:name="post.title"></demo>
           <img :src="require(`@/assets/${post.imgFile}`)" />
-          {{ post.title }}
 
-          <button v-on:click="openLightBox()" :modal-title="post.title"> Modal </button>
-          <modal v-bind:modal-title="post.title"> </modal>
+          <span>{{ post.title }}</span>
+          <div class="wrapperB">
+          <button
+            @click="openLightBox(post._id)"
+            :modal-title="post.title"></button>
+            </div>
+
           <!--Printas ej -->
+          <div id="myModal" class="lightbox nodisplay">
+            <span class="close cursor" v-on:click="closeLightBox()">x</span>
+            <div class="lightbox-content">
+              <div class="modal">
+                <div class="modal__modalImgUrl">
+                 
+                  {{ selectedProduct.imgFile }}
+                  
+                </div>
+                <div class="modal-title">{{ selectedProduct.title }}</div>
+                <div class="modal__modalPrice">{{ selectedProduct.price }}</div>
+               
+                <!-- <div class="modal__modalLongDesc">{{ modalLongDesc }}</div> -->
+              </div>
+            </div>
+          </div>
         </li>
-
       </ul>
     </section>
   </div>
@@ -42,26 +47,24 @@
 <script>
 // @ is an alias to /src
 import axios from "axios";
-import modal from "@/components/Modal.vue";
-import demo from "@/components/Demo.vue";
 
 export default {
   name: "Home",
 
-  components: {modal, demo},
+  components: {},
 
   data() {
     return {
       posts: [],
       errors: [],
 
-      longDesc: '',
-      title: '',
-      price: '',
-      imgUrl: ''
-
+      longDesc: "",
+      title: "",
+      price: "",
+      imgUrl: "",
+      imgFile: "",
+      selectedProduct: { title: "", price: "", imgUrl: ""  },
     };
-    
   },
 
   created() {
@@ -81,15 +84,16 @@ export default {
       //sessionStorage.removeItem('modalLongDesc')
       const open = document.getElementById("myModal");
       open.style.display = "block";
-
-      
     },
 
     closeLightBox() {
       const open = document.getElementById("myModal");
       open.style.display = "none";
+    },
 
-      
+    select(e) {
+      console.log(e);
+      this.selectedProduct = e;
     },
   },
 
@@ -106,6 +110,10 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+.wrapperB{
+  display: flex;
+  align-self: flex-start;
 }
 
 #triangle {
@@ -125,8 +133,11 @@ export default {
 }
 
 button {
-  width: 300px;
-  height: 200px;
+  
+  background-color: #bb9090;
+  width: 100%;
+  height: 100%
+  
 }
 
 .listItems {
@@ -153,63 +164,69 @@ button {
 }
 
 /* CODE FOR MODAL */
-// #myModal {
-//   border: 3px solid black;
-//   width: 100%;
-//   height: auto;
-// }
+#myModal {
+  border: 3px solid #bb9090;
+  width: 400px;
+  height: 500px;
+  background-color: wheat;
+}
 
-// /* The Lightbox (background) */
-// .lightbox {
-//   display: none;
-//   position: fixed;
-//   z-index: 1;
-//   margin-top: 100px;
-//   margin-left: 100px;
-//   margin-right: 100px;
-//   top: 0;
-//   width: 100%;
-//   height: 100%;
-//   overflow: auto;
-//   background-color: black;
-// }
+/* The Lightbox (background) */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  margin-top: 100px;
+  margin-left: 100px;
+  margin-right: 100px;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+}
 
-// /* Lightbox Content */
-// .modal-content {
-//   position: relative;
-//   background-color: #fefefe;
-//   margin: auto;
-//   padding: 0;
-//   width: 90%;
-//   max-width: 1200px;
-// }
+/* Lightbox Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+}
 
-// .display {
-//   display: block;
-// }
+.display {
+  display: block;
+}
 
-// .nodisplay {
-//   display: none;
-// }
+.nodisplay {
+  display: none;
+}
 
-// .main-wrapper {
-//   border: 3px solid black;
-//   width: 300px;
-//   height: 300px;
-// }
+.main-wrapper {
+  border: 3px solid black;
+  width: 300px;
+  height: 300px;
+}
 
-// /* The Close Button */
-// .close {
-//   color: white;
-//   /*position: absolute;*/
-//   top: 10px;
-//   right: 25px;
-//   font-size: 35px;
-//   font-weight: bold;
-// }
+/* The Close Button */
+.close {
+  color: white;
+  /*position: absolute;*/
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
 
-// /* Hide the slides by default */
-// .mySlides {
-//   display: none;
-// }
+/* Hide the slides by default */
+.mySlides {
+  display: none;
+}
+
+span{
+  color: orange;
+    font-size: larger;
+}
 </style>
