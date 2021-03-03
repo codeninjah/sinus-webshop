@@ -29,8 +29,10 @@
                 <div class="modal__modalImgUrl">
                  
                   {{ selectedProduct.imgFile }}
-                  
+                  <img :src="require(`@/assets/${selectedProduct.imgFile}`)" />
+
                 </div>
+                
                 <div class="modal-title">{{ selectedProduct.title }}</div>
                 <div class="modal__modalPrice">{{ selectedProduct.price }}</div>
                
