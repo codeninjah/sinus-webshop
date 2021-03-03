@@ -14,18 +14,20 @@
     </div> -->
 
     <section class="listWrapper">
+
       <ul class="imglist" v-if="posts && posts.length">
         <span v-on:click="openLightBox()">CODENINJAH IN THE HOUSE</span>
-        <Modal />
+        
+
         <li
           class="listItems"
           v-for="post in posts"
-          :key="post._id"
-          v-on:click="openLightBox()"
+          :key="post._id"      
         >
           <img :src="require(`@/assets/${post.imgFile}`)" />
           {{ post.title }}
-
+          <button v-on:click="openLightBox(post)">Modal</button>
+          <Modal :modalTitle="post.title"/>
           <!--Printas ej -->
         </li>
       </ul>
@@ -36,7 +38,7 @@
 <script>
 // @ is an alias to /src
 import axios from "axios";
-import Modal from "@/components/Modal.vue"
+import Modal from "@/components/Modal.vue";
 
 export default {
   name: "Home",
@@ -45,9 +47,14 @@ export default {
 
   data() {
     return {
-      clickedProduct: null,
       posts: [],
       errors: [],
+
+      modalLongDesc: '',
+      modalTitle: '',
+      modalPrice: '',
+      modalImgUrl: ''
+
     };
     
   },
@@ -65,11 +72,23 @@ export default {
   },
 
   methods: {
-    openLightBox() {
+    openLightBox(product) {
+      //sessionStorage.removeItem('modalLongDesc')
       const open = document.getElementById("myModal");
       open.style.display = "block";
 
+<<<<<<< HEAD
       
+=======
+      console.log(product)
+      //this.modalLongDesc = product.longDesc
+      
+      //sessionStorage.setItem('modalObj', this.modalObj)
+
+      //return product
+      //console.log(this.$root.imgArray)
+      //const array = this.$root.imgArray
+>>>>>>> d81871923fb9b8e099127231c1b7eeadd71d2478
     },
 
     closeLightBox() {
