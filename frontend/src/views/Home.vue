@@ -15,20 +15,17 @@
           <img :src="require(`@/assets/${post.imgFile}`)" />
 
           <span>{{ post.title }}</span>
-          <div class="wrapperB">
-          <button
-            @click="openLightBox(post._id)"
-            :modal-title="post.title"></button>
-            </div>
+         
 
           <!--Printas ej -->
           <div id="myModal" class="lightbox nodisplay">
             <span class="close cursor" v-on:click="closeLightBox()">x</span>
             <div class="lightbox-content">
+              
               <div class="modal">
                 <div class="modal__modalImgUrl">
                  
-                  {{ selectedProduct.imgFile }}
+                  {{ selectedProduct.shortDesc }}
                   
 
                 </div>
@@ -40,8 +37,15 @@
               </div>
             </div>
           </div>
+           <div class="wrapperB">
+          <button class="buttonM"
+            @click="openLightBox(post._id)"
+            :modal-title="post.title"></button>
+            </div>
         </li>
+        
       </ul>
+      
     </section>
   </div>
 </template>
@@ -66,6 +70,7 @@ export default {
       imgUrl: "",
       imgFile: "",
       selectedProduct: { title: "", price: "", imgUrl: ""  },
+      
     };
   },
 
@@ -110,12 +115,13 @@ export default {
 <style lang="scss" scoped>
 .wrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: row
+  ;
   justify-content: center;
 }
 .wrapperB{
   display: flex;
-  align-self: flex-start;
+  justify-content: center;
 }
 
 #triangle {
@@ -129,25 +135,22 @@ export default {
 .imglist {
   display: flex;
   flex-direction: row;
-  height: 500px;
+  height: 400px;
   margin: 0%;
   padding: 0%;
+      background-color: #ffffff17;
 }
 
-button {
-  
-  background-color: #bb9090;
-  width: 100%;
-  height: 100%
-  
-}
+
+
+
 
 .listItems {
   cursor: pointer;
   display: flex;
   flex-direction: column;
   width: 200px;
-  height: 500px;
+  height: 300px;
   text-decoration: none;
   background: repeating-radial-gradient(#ffffff08, transparent 100px);
   overflow: hidden;
@@ -157,11 +160,11 @@ button {
   box-shadow: 1px;
   box-shadow: 0px 0 1px 0px #0000003d;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .listWrapper {
-  min-height: 800px;
+  min-height: 400px;
   margin: 2%;
 }
 
@@ -227,8 +230,31 @@ button {
   display: none;
 }
 
+.buttonM {
+  outline: none;
+  border: 0;
+  color: beige;
+  padding: 0.5rem 1rem;
+    border-radius: 4%;
+    background-color: rgb(238, 245, 248);
+    transition: background-color 0.1s transform 0.1s;
+  cursor: pointer;
+   
+    width: 50%;
+    height: 20px;
+}
+
+button:hover{
+  background-color: rgb(60,80,140);
+}
+button:active{
+  background-color: rgb(30,50,120);
+  transform: scale(0.9);
+}
+
+
 span{
   color: orange;
-    font-size: larger;
+        font-size: 11px;
 }
 </style>
