@@ -7,7 +7,7 @@
         />
         <div class="modal">
           <div class="modal__modalImgUrl"> {{ modalImgUrl }} </div>
-          <div class="modal__modalTitle"> {{ modalTitle }} </div>
+          <div class="modal-title"> {{ modalTitle }} </div>
           <div class="modal__modalPrice"> {{ modalPrice }} </div>
           <div class="modal__modalLongDesc"> {{ modalLongDesc }} </div>
         </div>
@@ -21,7 +21,6 @@ export default {
     name: "Modal",
 
     props: [
-
       'modalLongDesc',
       'modalPrice',
       'modalTitle',

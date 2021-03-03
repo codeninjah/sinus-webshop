@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    
     <div class="wrapper" @click="openLightBox">
       <a id="triangle" href="#"></a>
     </div>
@@ -24,12 +25,15 @@
           v-for="post in posts"
           :key="post._id"      
         >
+          <demo v-bind:name="post.title"></demo>
           <img :src="require(`@/assets/${post.imgFile}`)" />
           {{ post.title }}
-          <button v-on:click="openLightBox(post)">Modal</button>
-          <Modal :modalTitle="post.title"/>
+
+          <button v-on:click="openLightBox()" :modal-title="post.title"> Modal </button>
+          <modal v-bind:modal-title="post.title"> </modal>
           <!--Printas ej -->
         </li>
+
       </ul>
     </section>
   </div>
@@ -38,22 +42,23 @@
 <script>
 // @ is an alias to /src
 import axios from "axios";
-import Modal from "@/components/Modal.vue";
+import modal from "@/components/Modal.vue";
+import demo from "@/components/Demo.vue";
 
 export default {
   name: "Home",
 
-  components: {Modal},
+  components: {modal, demo},
 
   data() {
     return {
       posts: [],
       errors: [],
 
-      modalLongDesc: '',
-      modalTitle: '',
-      modalPrice: '',
-      modalImgUrl: ''
+      longDesc: '',
+      title: '',
+      price: '',
+      imgUrl: ''
 
     };
     
@@ -77,6 +82,11 @@ export default {
       const open = document.getElementById("myModal");
       open.style.display = "block";
 
+<<<<<<< HEAD
+=======
+
+      //this.modalLongDesc = product.longDesc
+>>>>>>> be41baf7afccd80e1d085dae433804b1b6fee083
       
     },
 
@@ -119,12 +129,17 @@ export default {
   padding: 0%;
 }
 
+button {
+  width: 300px;
+  height: 200px;
+}
+
 .listItems {
   cursor: pointer;
   display: flex;
   flex-direction: column;
   width: 200px;
-  height: 200px;
+  height: 500px;
   text-decoration: none;
   background: repeating-radial-gradient(#ffffff08, transparent 100px);
   overflow: hidden;
