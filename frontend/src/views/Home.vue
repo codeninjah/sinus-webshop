@@ -77,18 +77,7 @@ export default {
       const open = document.getElementById("myModal");
       open.style.display = "block";
 
-<<<<<<< HEAD
       
-=======
-      console.log(product)
-      //this.modalLongDesc = product.longDesc
-      
-      //sessionStorage.setItem('modalObj', this.modalObj)
-
-      //return product
-      //console.log(this.$root.imgArray)
-      //const array = this.$root.imgArray
->>>>>>> d81871923fb9b8e099127231c1b7eeadd71d2478
     },
 
     closeLightBox() {
