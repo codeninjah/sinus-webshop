@@ -29,7 +29,7 @@
                 <div class="modal__modalImgUrl">
                  
                   {{ selectedProduct.imgFile }}
-                  <img :src="require(`@/assets/${selectedProduct.imgFile}`)" />
+                  
 
                 </div>
                 
