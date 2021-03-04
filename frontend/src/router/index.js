@@ -5,8 +5,8 @@ import Checkout from '../views/Checkout.vue'
 import KundKorg from '../views/KundKorg.vue'
 import LoggIn from '../views/LoggIn.vue'
 import MyAccount from '../views/MyAccount.vue'
-import ProduktInfo from '../views/ProduktInfo.vue'
-import ProduktLista from '../views/ProduktLista.vue'
+//import ProduktInfo from '../views/ProduktInfo.vue'
+//import ProduktLista from '../views/ProduktLista.vue'
 //import AuthDemo from '../views/AuthDemo.vue'
 
 Vue.use(VueRouter)
@@ -38,6 +38,7 @@ const routes = [
     name: 'MyAccount',
     component: MyAccount
   },
+  /*
   {
     path: '/products/:id',
     name: 'ProduktInfo',
@@ -48,7 +49,7 @@ const routes = [
     name: 'ProduktLista',
     component: ProduktLista
   },
-  /*
+  
   {
     path: '/authdemo',
     name: 'AuthDemo',
