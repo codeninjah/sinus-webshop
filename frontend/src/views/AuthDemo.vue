@@ -7,10 +7,22 @@
   <form @submit.prevent="submit">
             <input type="text" v-model="email" placeholder="email">
             <input type="text" v-model="password" placeholder="password">
+
+            <div class="info hidden">
+              <input type="text" v-model="name" placeholder="name">
+
+            <!--
+              <div class="adress">
+              <input type="text" v-model="street" placeholder="street">
+              <input type="text" v-model="zip" placeholder="zip">
+              <input type="text" v-model="city" placeholder="city">
+              </div>
+            -->
+            </div>
             <button>Login</button>
     </form>
 
-    <button @click="register">Register</button>
+    <button @click="showRegisterForm">Register</button>
 
   <div class="info" v-if="tokenData">
     <button @click="verify">Verify</button>
@@ -28,7 +40,13 @@ export default {
   data(){return{
     tokenData: null,
     email: '',
-    password: ''
+    password: '',
+    name: '',
+    adress: {
+      street: '',
+      zip: '',
+      city: ''
+    }
   }},
   methods: {
     
@@ -64,22 +82,61 @@ export default {
 
     //CODENINJAH WAS HERE
     //USING AXIOS
-    async register(){
+      async register(){
       console.log(this.email) //undefined
       const payload = {email: this.email, password: this.password,
-      name: 'Johan Kivi',
+      name: this.name,
 
-      address: {
-      street: 'Tokitokvägen 3',
-      zip: '123 45',
-      city: 'Tokberga'
+      "address": {
+            "street": "Tokitokvägen 4",
+            "zip": "123 46",
+            "city": "Tokbergaskogen"
+        },
+
+      //Här får jag fel
+      /*
+      adress: this.address = {
+      street: this.street,
+      zip: this.zip,
+      city: this.city
       }
+      */
 
       }
       const request = await axios.post('http://localhost:5000/api/register', payload)
 
       console.log(request)
     },
+    
+    async showRegisterForm(){
+      /* const req = await register()
+      return req() */
+
+      const nameBox = document.getElementsByClassName("info")[0]
+      nameBox.classList.remove("hidden")
+
+      if(this.email.length > 0 && this.email.length > 0 && this.name.length > 0) {
+
+      let result = await this.register()
+
+      /*
+      const adressDiv = document.getElementsByClassName("adress")[0]
+      adressDiv.innerHTML = ""
+      adressDiv.classList.add("hidden")
+      */
+
+      nameBox.innerHTML = ""
+      nameBox.classList.add("hidden")
+
+      return result
+      }
+
+      else {
+        console.log("You need to fill all fields!")
+      }
+
+    },
+    
 
     async submit(){
       const payload = {email: this.email, password: this.password}
@@ -138,5 +195,9 @@ button:hover{
 button:active{
   background-color: rgb(30,50,120);
   transform: scale(0.9);
+}
+
+.hidden{
+  display: none;
 }
 </style>
