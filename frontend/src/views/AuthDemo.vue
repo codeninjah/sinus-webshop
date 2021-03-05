@@ -114,8 +114,7 @@ export default {
       }
       const request = await axios.post('http://localhost:5000/api/register', payload)
 
-      console.log("Payload är: " + payload.name)
-      console.log("Request är: " + request)
+      console.log(request)
     },
     
     async showRegisterForm(){
@@ -135,7 +134,7 @@ export default {
       adressDiv.classList.add("hidden")
       */
 
-      //nameBox.innerHTML = ""
+      //this.name = ''
       nameBox.classList.add("hidden")
 
       return result
@@ -163,20 +162,27 @@ export default {
       // const responseData = await request.json()      
       console.log(responseData)
       console.log("Logged in successful")
-      console.log("Payload är: " + JSON.stringify(payload)) 
 
       //Cookie
       //Att användda localStorage eller localSession och sätta ett item
 
       //använd stringify response data
       
-      localStorage.setItem("inloggad", JSON.stringify(payload))
+      sessionStorage.setItem("inloggad", JSON.stringify(payload))
 
-      if(localStorage.getItem("inloggad")){
-        console.log("AuthDemos vy setItem vid inloggning är successfull!")
+      if(sessionStorage.getItem("inloggad")){
+        console.log("setItem successfull!")
+        this.$router.push('/myaccount')
       }
       
+
     }
+  },
+  beforeMount(){
+    if(sessionStorage.getItem("inloggad")){
+        console.log("setItem successfull!")
+        this.$router.push('/myaccount')
+      }
   }
 }
 </script>

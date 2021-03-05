@@ -1,5 +1,6 @@
 <template>
     <div class="wrapper">
+        <button>Logg out</button>
         <h1>My Account</h1>
         <p v-if="loggedIn">Du är inloggad! {{loggedInUserData}}</p>
         </div>
@@ -26,15 +27,16 @@ export default {
         },
         */
     created(){
-            if(localStorage.getItem("inloggad")){
+            if(sessionStorage.getItem("inloggad")){
                 this.loggedIn = true
                 console.log("MyAccounts vy getItem successfull!")
                 //FÖLJANDE RAD BEHÖVER ERSÄTTAS/BYGGAS PÅ
                 //this.$store.dispatch("getUser")
                 // Retrieve the object from storage
 
-                const loggedInUser = localStorage.getItem('inloggad');
-                this.loggedInUserData = loggedInUser
+                const loggedInUser = sessionStorage.getItem('inloggad');
+                this.loggedInUserData = JSON.parse(loggedInUser)
+                
                 console.log('inloggadUser: ', JSON.parse(loggedInUser));
                 }
             }
