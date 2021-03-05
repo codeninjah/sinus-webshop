@@ -168,9 +168,9 @@ export default {
 
       //använd stringify response data
       
-      sessionStorage.setItem("test", "true")
+      localStorage.setItem("inloggad", "true")
 
-      if(sessionStorage.getItem("test") == "true"){
+      if(localStorage.getItem("test") == "true"){
         console.log("setItem successfull!")
       }
       
