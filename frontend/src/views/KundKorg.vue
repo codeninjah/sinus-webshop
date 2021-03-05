@@ -7,6 +7,7 @@
             <div v-for="product in getCart"
                 :key="product.id">
                 {{product.title}}
+                {{product.price}}
             </div>
     </div>
 </template>
