@@ -4,20 +4,31 @@
 
 <template>
 <div class="wrapper">
-  <LoggInForm @login="handleLogin" />
+  <form @submit.prevent="submit">
+            <input type="text" v-model="email" placeholder="email">
+            <input type="text" v-model="password" placeholder="password">
+            <button>Login</button>
+    </form>
+
+    <button @click="register">Register</button>
+
   <div class="info" v-if="tokenData">
     <button @click="verify">Verify</button>
     <button @click="change">Change</button>
   </div>
+  
 </div>
 </template>
 
 <script>
-import LoggInForm from '@/components/LoggInForm'
+import axios from 'axios'
+//import LoggInForm from '@/components/LoggInForm'
 export default {
-  components: {LoggInForm},
+  //components: {LoggInForm},
   data(){return{
-    tokenData: null
+    tokenData: null,
+    email: '',
+    password: ''
   }},
   methods: {
     handleLogin(tokenData){
@@ -46,6 +57,26 @@ export default {
       })
       const responseData = await request.json()
       console.log(responseData);      
+      console.log(this.tokenData.token); //undefined
+    },
+
+    //CODENINJAH WAS HERE
+    //USING AXIOS
+    async register(){
+      console.log(this.email) //undefined
+      const payload = {email: this.email, password: this.password,
+      name: 'Johan Kivi',
+
+      address: {
+      street: 'Tokitokvägen 3',
+      zip: '123 45',
+      city: 'Tokberga'
+      }
+
+      }
+      const request = await axios.post('http://localhost:5000/api/register', payload)
+
+      console.log(request)
     }
   }
 }

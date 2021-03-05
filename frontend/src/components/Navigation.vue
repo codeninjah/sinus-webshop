@@ -34,9 +34,9 @@
       <router-link to="/produktlista">Produktlista</router-link> |
       -->
 
-      <!--
+      
       <router-link to="/authdemo">Auth demo</router-link>
-      -->
+      
 
     </div>
     <div class="underNav">

@@ -7,7 +7,7 @@ import LoggIn from '../views/LoggIn.vue'
 import MyAccount from '../views/MyAccount.vue'
 //import ProduktInfo from '../views/ProduktInfo.vue'
 //import ProduktLista from '../views/ProduktLista.vue'
-//import AuthDemo from '../views/AuthDemo.vue'
+import AuthDemo from '../views/AuthDemo.vue'
 
 Vue.use(VueRouter)
 
@@ -49,13 +49,13 @@ const routes = [
     name: 'ProduktLista',
     component: ProduktLista
   },
-  
+  */
   {
     path: '/authdemo',
     name: 'AuthDemo',
     component: AuthDemo
   },
-  */
+  
 ]
 
 const router = new VueRouter({

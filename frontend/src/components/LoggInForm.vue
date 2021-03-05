@@ -5,8 +5,6 @@
             <input type="text" v-model="password" placeholder="password">
             <button>Login</button>
         </form>
-        <label>Not a user yet?</label>
-        <button>Register</button>
     </div>
 </template>
 
@@ -16,14 +14,15 @@
 //Davids kod
 //https://github.com/iths-javascript/auth-demo/blob/main/LoginForm.vue
 
-import axios from 'axios'
+//import axios from 'axios'
 export default {
   
   data(){return{
-    email: 'customer@example.com',
-    password: 'password'
+    email: 'alex@example.com',
+    password: 'alex'
   }},
   methods:{
+    /*
     async submit(){
       const payload = {email: this.email, password: this.password}
       
@@ -39,6 +38,7 @@ export default {
       // const responseData = await request.json()      
       this.$emit('login', responseData)
     }
+    */
   }
 }
 </script>
