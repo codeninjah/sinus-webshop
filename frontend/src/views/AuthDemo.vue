@@ -13,12 +13,13 @@
 
             <!--
               <div class="adress">
-              <input type="text" v-model="street" placeholder="street">
-              <input type="text" v-model="zip" placeholder="zip">
-              <input type="text" v-model="city" placeholder="city">
+              <input type="text" v-model="adress.street" placeholder="street">
+              <input type="text" v-model="adress.zip" placeholder="zip">
+              <input type="text" v-model="adress.city" placeholder="city">
               </div>
             -->
-            </div>
+            
+          </div>
             <button>Login</button>
     </form>
 
@@ -91,7 +92,15 @@ export default {
             "street": "Tokitokvägen 4",
             "zip": "123 46",
             "city": "Tokbergaskogen"
+        }
+
+      /*
+      "adress" : {
+            street: this.street,
+            zip: this.zip,
+            city: this.city
         },
+      */
 
       //Här får jag fel
       /*
@@ -125,7 +134,7 @@ export default {
       adressDiv.classList.add("hidden")
       */
 
-      nameBox.innerHTML = ""
+      //nameBox.innerHTML = ""
       nameBox.classList.add("hidden")
 
       return result
