@@ -16,7 +16,7 @@
     <button @click="verify">Verify</button>
     <button @click="change">Change</button>
   </div>
-  
+
 </div>
 </template>
 
@@ -31,9 +31,11 @@ export default {
     password: ''
   }},
   methods: {
+    
     handleLogin(tokenData){
       this.tokenData = tokenData      
     },
+    
     async verify(){
       const request = await fetch('http://localhost:5000/api/me', {
         method: 'GET',
@@ -77,6 +79,23 @@ export default {
       const request = await axios.post('http://localhost:5000/api/register', payload)
 
       console.log(request)
+    },
+
+    async submit(){
+      const payload = {email: this.email, password: this.password}
+      
+      const responseData = await axios.post('http://localhost:5000/api/auth', payload)
+  
+      // const request = await fetch('http://localhost:5000/api/auth', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify(payload)
+      // })
+      // const responseData = await request.json()      
+      console.log(responseData)
+      console.log("Logged in successful")
     }
   }
 }
