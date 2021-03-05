@@ -6,8 +6,7 @@
         <div class="totheleft">
            <img src="@/assets/sinus-logo.png" alt="" />
            <router-link to="/" class="home-icon"
-          ><img class="home-icon" src="@/assets/home-icon.png" alt=""
-        /></router-link>
+          ><img class="home-icon" src="@/assets/home-icon.png" alt="" /></router-link>
         
         </div>
 
@@ -18,8 +17,13 @@
             ><img class="account-icon" src="@/assets/user.png" alt=""
           /></router-link>
           <router-link to="/kundkorg" class="cart-icon"
-            ><img class="cart-icon" src="@/assets/cart-white.png" alt=""
-          /></router-link>
+            >
+            <div class="cart-img-wrapper">
+              <img class="cart-icon" src="@/assets/cart-white.png" alt=""/>
+              <span>{{cartLength}}</span>
+            </div>
+
+          </router-link>
           <img src="@/assets/wiggly-sinus.png" alt="" />
         </section>
       </div>
@@ -48,10 +52,18 @@
 <script>
 export default {
   name: "Navigation",
+  computed:{
+    cartLength(){
+      return this.$store.getters.getCartLength
+    }
+  }
 };
 </script>
 
 <style lang="scss">
+// .wrapper{
+//   padding: 10px 0;
+// }
 .underNav {
   display: flex;
   flex-direction: row;
@@ -63,6 +75,7 @@ export default {
 }
 
 .overNav {
+  padding: 10px 0;
   display: flex;
   flex-direction: row;
 
@@ -78,6 +91,25 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   width: 200px;
+  .cart-img-wrapper{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 4px;
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      height: 10px;
+      width: 10px;
+      background-color: red;
+      border-radius: 50%;
+    }
+  }
 }
 .totheleft {
   display: flex;

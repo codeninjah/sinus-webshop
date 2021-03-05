@@ -102,7 +102,13 @@ export default {
     select(e) {
       console.log(e);
       this.selectedProduct = e;
+      this.addToCart(e)
     },
+
+    addToCart(payload) {
+      this.$store.dispatch("addToCart", payload)
+    }
+
   },
 
   computed: {
