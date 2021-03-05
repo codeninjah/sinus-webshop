@@ -30,6 +30,7 @@
 
                 </div>
                 
+                <img width="100px" height="100px" :src="selectedImgFile.imgFile" />
                 <div class="modal-title">{{ selectedProduct.title }}</div>
                 <div class="modal__modalPrice">{{ selectedProduct.price }}</div>
                
@@ -40,7 +41,7 @@
            <div class="wrapperB">
           <button class="buttonM"
             @click="openLightBox(post._id)"
-            :modal-title="post.title"></button>
+            :modal-title="post.title">Details</button>
             </div>
         </li>
         
@@ -67,9 +68,9 @@ export default {
       longDesc: "",
       title: "",
       price: "",
-      imgUrl: "",
-      imgFile: "",
-      selectedProduct: { title: "", price: "", imgUrl: ""  },
+      //imgUrl: "",
+      //imgFile: "",
+      selectedProduct: { title: "", price: "", imgFile: ""  },
       
     };
   },
@@ -108,6 +109,15 @@ export default {
     products() {
       return this.$store.state.products;
     },
+
+  selectedImgFile () {
+    return {
+      ...this.selectedProduct, 
+      imgFile: this.selectedProduct.imgFile && require(`@/assets/${this.selectedProduct.imgFile}`)
+    }
+  }
+
+
   },
 };
 </script>
