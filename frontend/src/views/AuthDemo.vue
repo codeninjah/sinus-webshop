@@ -96,6 +96,19 @@ export default {
       // const responseData = await request.json()      
       console.log(responseData)
       console.log("Logged in successful")
+
+      //Cookie
+      //Att användda localStorage eller localSession och sätta ett item
+
+      //använd stringify response data
+      
+      sessionStorage.setItem("test", "true")
+
+      if(sessionStorage.getItem("test") == "true"){
+        console.log("setItem successfull!")
+      }
+      
+
     }
   }
 }
