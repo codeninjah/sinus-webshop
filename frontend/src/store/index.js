@@ -16,7 +16,11 @@ export default new Vuex.Store({
     getProduct: (state) => (id) => {
       return state.products.find(prod => id == prod.id)
     },
-    getCartLength: (state) => state.cart.length
+    getCartLength: (state) => state.cart.length,
+    
+    getCart: (state) => state.cart,
+    
+    
   },
   mutations: {
     GET_PRODUCTS(state, products) {
