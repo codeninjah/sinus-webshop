@@ -12,7 +12,7 @@
           v-for="post in posts"
           :key="post._id"
         >
-          <img :src="require(`@/assets/${post.imgFile}`)" />
+          <img :src="require(`@/assets/${post.imgFile}`)"/>
 
           <span>{{ post.title }}</span>
          
@@ -29,7 +29,7 @@
                   
 
                 </div>
-                
+              <img :src="require(`@/assets/${selectedProduct.imgFile}`)" alt="">
                 <div class="modal-title">{{ selectedProduct.title }}</div>
                 <div class="modal__modalPrice">{{ selectedProduct.price }}</div>
                
@@ -67,9 +67,8 @@ export default {
       longDesc: "",
       title: "",
       price: "",
-      imgUrl: "",
-      imgFile: "",
-      selectedProduct: { title: "", price: "", imgUrl: ""  },
+      imgFile: "",   
+      selectedProduct: { title: "", price: "", imgFile:""  },
       
     };
   },
