@@ -114,7 +114,8 @@ export default {
       }
       const request = await axios.post('http://localhost:5000/api/register', payload)
 
-      console.log(request)
+      console.log("Payload är: " + payload.name)
+      console.log("Request är: " + request)
     },
     
     async showRegisterForm(){
@@ -162,19 +163,19 @@ export default {
       // const responseData = await request.json()      
       console.log(responseData)
       console.log("Logged in successful")
+      console.log("Payload är: " + JSON.stringify(payload)) 
 
       //Cookie
       //Att användda localStorage eller localSession och sätta ett item
 
       //använd stringify response data
       
-      localStorage.setItem("inloggad", "true")
+      localStorage.setItem("inloggad", JSON.stringify(payload))
 
-      if(localStorage.getItem("test") == "true"){
-        console.log("setItem successfull!")
+      if(localStorage.getItem("inloggad")){
+        console.log("AuthDemos vy setItem vid inloggning är successfull!")
       }
       
-
     }
   }
 }
