@@ -21,4 +21,8 @@ export default {
 
 <style scoped>
 
+    .wrapper{
+        padding: 10px 0;
+    }
+
 </style>
