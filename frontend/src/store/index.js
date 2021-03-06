@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 
+import * as API from '../api/index'
+
 import products from './products.store'
 import user from './user.store'
 
@@ -11,7 +13,7 @@ export default new Vuex.Store({
   state: {
     products: [],
     cart: [],
-    user: ''
+    user: null,
   },
 
   getters: {
@@ -21,9 +23,14 @@ export default new Vuex.Store({
     getCartLength: (state) => state.cart.length,
     
     getCart: (state) => state.cart,
-    
-    
+
+    //user stuff
+    getUser(state) {
+      return state.user
+    }
+
   },
+  
   mutations: {
     GET_PRODUCTS(state, products) {
       state.products = products
@@ -32,8 +39,9 @@ export default new Vuex.Store({
       state.cart.push(payload)
       console.log(state.cart)
     },
-    GET_USER(state, user) {
-      state.user = user
+    //User stuff
+    CURRENT_USER(state, payload) {
+      state.user = payload
     }
   },
   actions: {
@@ -51,14 +59,11 @@ export default new Vuex.Store({
     },
 
     //HÄR BÖRJAR JAG SKISSA PÅ ATT FÅ FRAM INLOGGAD USER
-    getUser({commit}) {
-      axios.get('http://localhost:5000/api/me/')
-        .then((response) => {
-          commit('GET_USER', response.data.user)
-        })
-        .catch((err) => {
-          console.error(err)
-        })
+    async getUser({commit}, payload) {
+      const user = await API.getUser(payload)
+      if (user) {
+        commit('CURRENT_USER', user)
+      }
     },
 
 },
