@@ -132,8 +132,8 @@ export default {
       this.name = ''
 
       nameBox.classList.add("hidden")
-
       return result
+      
       }
 
       else {
