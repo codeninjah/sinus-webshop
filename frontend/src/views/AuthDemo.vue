@@ -124,17 +124,13 @@ export default {
       const nameBox = document.getElementsByClassName("info")[0]
       nameBox.classList.remove("hidden")
 
-      if(this.email.length > 0 && this.email.length > 0 && this.name.length > 0) {
+      if(this.email.length > 0 && this.password.length > 0 && this.name.length > 0) {
 
       let result = await this.register()
+      this.email = ''
+      this.password = ''
+      this.name = ''
 
-      /*
-      const adressDiv = document.getElementsByClassName("adress")[0]
-      adressDiv.innerHTML = ""
-      adressDiv.classList.add("hidden")
-      */
-
-      //this.name = ''
       nameBox.classList.add("hidden")
 
       return result
@@ -160,13 +156,9 @@ export default {
       //   body: JSON.stringify(payload)
       // })
       // const responseData = await request.json()      
+
       console.log(responseData)
       console.log("Logged in successful")
-
-      //Cookie
-      //Att användda localStorage eller localSession och sätta ett item
-
-      //använd stringify response data
       
       sessionStorage.setItem("inloggad", JSON.stringify(payload))
 
