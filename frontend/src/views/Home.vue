@@ -12,7 +12,7 @@
           v-for="post in posts"
           :key="post._id"
         >
-          <img :src="require(`@/assets/${post.imgFile}`)" />
+          <img :src="require(`@/assets/${post.imgFile}`)"/>
 
           <span>{{ post.title }}</span>
          

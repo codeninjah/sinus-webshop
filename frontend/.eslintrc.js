@@ -18,6 +18,8 @@ module.exports = {
 }
 
 
+<<<<<<< HEAD
+=======
 /*
 module.exports = {
   root: true,
@@ -34,3 +36,4 @@ module.exports = {
   }
 };
 */
+>>>>>>> 2666da6025f98b8051c1d925abe1c486249153b3
