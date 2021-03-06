@@ -112,8 +112,11 @@ export default {
       */
 
       }
-      const request = await axios.post('http://localhost:5000/api/register', payload)
 
+      //BYGG PÅ MED FÖLJANDE;
+      //https://flaviocopes.com/axios-send-authorization-header/
+      const request = await axios.post('http://localhost:5000/api/register', payload)      
+      
       console.log(request)
     },
     
@@ -127,13 +130,14 @@ export default {
       if(this.email.length > 0 && this.password.length > 0 && this.name.length > 0) {
 
       let result = await this.register()
+
       this.email = ''
       this.password = ''
       this.name = ''
 
       nameBox.classList.add("hidden")
       return result
-      
+    
       }
 
       else {
