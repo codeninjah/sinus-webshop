@@ -21,6 +21,7 @@ export default {
     email: 'alex@example.com',
     password: 'alex'
   }},
+
   methods:{
     /*
     async submit(){
