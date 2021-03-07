@@ -85,7 +85,8 @@ export default {
     //USING AXIOS
       async register(){
       console.log(this.email) //undefined
-      const payload = {email: this.email, password: this.password,
+      //byt till "token" från payload
+      const token = {email: this.email, password: this.password,
       name: this.name,
 
       "address": {
@@ -115,9 +116,20 @@ export default {
 
       //BYGG PÅ MED FÖLJANDE;
       //https://flaviocopes.com/axios-send-authorization-header/
-      const request = await axios.post('http://localhost:5000/api/register', payload)      
-      
-      console.log(request)
+      const config = {
+        headers: { Authorization: `Bearer ${token}` }
+      };
+      //const bodyParameters = {}
+      const request = await axios.post('http://localhost:5000/api/register', 
+      token,
+      config
+      )      
+      .then(console.log).catch(console.log)
+
+      console.log("Request: ", request) // Request undefined
+      console.log("Config är: ", config) //Object
+      console.log("Token är", config.headers) //Authorization [object Object]
+      console.log("Token är", config.headers.Authorization) //Bearer [object Object]
     },
     
     async showRegisterForm(){
