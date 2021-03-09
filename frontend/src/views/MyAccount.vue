@@ -1,9 +1,16 @@
 <template>
     <div class="wrapper">
-        <button>Logg out</button>
-        <h1>My Account</h1>
-        <p v-if="loggedIn">Du är inloggad! {{loggedInUserData}}</p>
+        <div v-if="loggedIn">
+            <button @click="loggOut">Logg out</button>
+            <h1>My Account</h1>
+            <p>Du är inloggad! {{loggedInUserData}}</p>
+            <p>User Name: {{userDetails.name}}</p>
         </div>
+        <div v-if="!loggedIn">
+            <h1>Du är inte inloggad!</h1>
+            <router-link to="/authdemo"><button>Till inloggning</button></router-link>
+        </div>
+    </div>
 </template>
 
 
@@ -16,16 +23,16 @@ export default {
         loggedIn : false,
         loggedInUserData: ''
     }},
-    /*
+    
     methods: {
-        ifLoggedIn(){
-            if(localStorage.getItem("inloggad") == "true"){
-                this.loggedIn = true
-                console.log("setItem successfull!")
-                }
+        loggOut(){
+            sessionStorage.removeItem("inloggad")
+                this.loggedIn = false
+                console.log("You logged out!")
+                this.$router.push('/')               
             }
         },
-        */
+        
     created(){
             if(sessionStorage.getItem("inloggad")){
                 this.loggedIn = true
@@ -38,8 +45,27 @@ export default {
                 this.loggedInUserData = JSON.parse(loggedInUser)
                 
                 console.log('inloggadUser: ', JSON.parse(loggedInUser));
+
+                console.log("This route: " + this.$route)
+                console.log("This router: " + this.$router)
                 }
-            }
+            },
+
+    computed: {
+            user() {
+                return this.$store.getters.user
+            },
+            userDetails() {
+                if (this.user) {
+                    return {
+                        name: this.user.name
+                    }
+                }
+                else {
+                    return {}
+                }
+            },
+        }
     
     }
 </script>
