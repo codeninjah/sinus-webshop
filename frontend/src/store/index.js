@@ -38,7 +38,6 @@ export default new Vuex.Store({
     ADD_TO_CART(state, payload) {
       state.cart.push(payload)
       console.log(state.cart)
-    },
     //User stuff
     CURRENT_USER(state, payload) {
       state.user = payload
