@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
 
 
 
@@ -14,6 +15,9 @@
                 {{product.price}}
             </div>
     </div>
+=======
+   <div></div>
+>>>>>>> 53bccafe117807189e168c33ccc2331ec5f43b23
 </template>
 
 
@@ -22,9 +26,7 @@ export default {
     name: "KundKorg",
 
     computed:{
-        getCart(){
-            return this.$store.getters.getCart
-        }
+      
     }
 }
 </script>

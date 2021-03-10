@@ -5,11 +5,11 @@
 <template>
 <div class="wrapper">
   <form @submit.prevent="submit">
-            <input type="text" v-model="email" placeholder="email">
-            <input type="text" v-model="password" placeholder="password">
+            <input type="text" v-model="user.email" placeholder="email">
+            <input type="text" v-model="user.password" placeholder="password">
 
             <div class="info hidden">
-              <input type="text" v-model="name" placeholder="name">
+              <input type="text" v-model="user.name" placeholder="name">
 
             <!--
               <div class="adress">
@@ -34,12 +34,13 @@
 </template>
 
 <script>
-import axios from 'axios'
+//import axios from 'axios'
 //import LoggInForm from '@/components/LoggInForm'
 export default {
   //components: {LoggInForm},
   data(){return{
     tokenData: null,
+    user : {
     email: '',
     password: '',
     name: '',
@@ -47,8 +48,10 @@ export default {
       street: '',
       zip: '',
       city: ''
+      }
     }
   }},
+
   methods: {
     
     handleLogin(tokenData){
@@ -86,6 +89,8 @@ export default {
       async register(){
       console.log(this.email) //undefined
       //byt till "token" från payload
+      
+      /*
       const token = {email: this.email, password: this.password,
       name: this.name,
 
@@ -94,6 +99,7 @@ export default {
             "zip": "123 46",
             "city": "Tokbergaskogen"
         }
+        */
 
       /*
       "adress" : {
@@ -112,10 +118,11 @@ export default {
       }
       */
 
-      }
+    
 
       //BYGG PÅ MED FÖLJANDE;
       //https://flaviocopes.com/axios-send-authorization-header/
+      /*
       const config = {
         headers: { Authorization: `Bearer ${token}` }
       };
@@ -125,11 +132,26 @@ export default {
       config
       )      
       .then(console.log).catch(console.log)
+      */
 
-      console.log("Request: ", request) // Request undefined
-      console.log("Config är: ", config) //Object
-      console.log("Token är", config.headers) //Authorization [object Object]
-      console.log("Token är", config.headers.Authorization) //Bearer [object Object]
+      const payload = {email: this.user.email, password: this.user.password, name: this.user.name}
+      
+      //const responseData = await axios.post('http://localhost:5000/api/auth', payload)
+  
+      //Testar med fetch istället
+      const request = await fetch('http://localhost:5000/api/auth', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+      const responseData = await request.json()
+
+      console.log("Request: ", responseData) // Request undefined
+      //console.log("Config är: ", config) //Object
+      //console.log("Token är", config.headers) //Authorization [object Object]
+      //console.log("Token är", config.headers.Authorization) //Bearer [object Object]
     },
     
     async showRegisterForm(){
@@ -139,13 +161,13 @@ export default {
       const nameBox = document.getElementsByClassName("info")[0]
       nameBox.classList.remove("hidden")
 
-      if(this.email.length > 0 && this.password.length > 0 && this.name.length > 0) {
+      if(this.user.email.length > 0 && this.user.password.length > 0 && this.user.name.length > 0) {
 
       let result = await this.register()
 
-      this.email = ''
-      this.password = ''
-      this.name = ''
+      this.user.email = ''
+      this.user.password = ''
+      this.user.name = ''
 
       nameBox.classList.add("hidden")
       return result
@@ -160,18 +182,20 @@ export default {
     
 
     async submit(){
-      const payload = {email: this.email, password: this.password}
+      const payload = {email: this.user.email, password: this.user.password, name: this.user.name,}
       
-      const responseData = await axios.post('http://localhost:5000/api/auth', payload)
+      //const responseData = await axios.post('http://localhost:5000/api/auth', payload)
   
-      // const request = await fetch('http://localhost:5000/api/auth', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   },
-      //   body: JSON.stringify(payload)
-      // })
-      // const responseData = await request.json()      
+      //Testar med fetch istället
+      const request = await fetch('http://localhost:5000/api/auth', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+
+      const responseData = await request.json()      
 
       console.log(responseData)
       console.log("Logged in successful")
@@ -183,8 +207,8 @@ export default {
         this.$router.push('/myaccount')
       }
       
+    },
 
-    }
   },
   beforeMount(){
     if(sessionStorage.getItem("inloggad")){
