@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+//import axios from 'axios'
 //import LoggInForm from '@/components/LoggInForm'
 export default {
   //components: {LoggInForm},
@@ -86,6 +86,8 @@ export default {
       async register(){
       console.log(this.email) //undefined
       //byt till "token" från payload
+      
+      /*
       const token = {email: this.email, password: this.password,
       name: this.name,
 
@@ -94,6 +96,7 @@ export default {
             "zip": "123 46",
             "city": "Tokbergaskogen"
         }
+        */
 
       /*
       "adress" : {
@@ -112,10 +115,11 @@ export default {
       }
       */
 
-      }
+    
 
       //BYGG PÅ MED FÖLJANDE;
       //https://flaviocopes.com/axios-send-authorization-header/
+      /*
       const config = {
         headers: { Authorization: `Bearer ${token}` }
       };
@@ -125,11 +129,26 @@ export default {
       config
       )      
       .then(console.log).catch(console.log)
+      */
 
-      console.log("Request: ", request) // Request undefined
-      console.log("Config är: ", config) //Object
-      console.log("Token är", config.headers) //Authorization [object Object]
-      console.log("Token är", config.headers.Authorization) //Bearer [object Object]
+      const payload = {email: this.email, password: this.password, name: this.name}
+      
+      //const responseData = await axios.post('http://localhost:5000/api/auth', payload)
+  
+      //Testar med fetch istället
+      const request = await fetch('http://localhost:5000/api/auth', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+      const responseData = await request.json()
+
+      console.log("Request: ", responseData) // Request undefined
+      //console.log("Config är: ", config) //Object
+      //console.log("Token är", config.headers) //Authorization [object Object]
+      //console.log("Token är", config.headers.Authorization) //Bearer [object Object]
     },
     
     async showRegisterForm(){
@@ -160,18 +179,20 @@ export default {
     
 
     async submit(){
-      const payload = {email: this.email, password: this.password}
+      const payload = {email: this.email, password: this.password, name: this.name,}
       
-      const responseData = await axios.post('http://localhost:5000/api/auth', payload)
+      //const responseData = await axios.post('http://localhost:5000/api/auth', payload)
   
-      // const request = await fetch('http://localhost:5000/api/auth', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   },
-      //   body: JSON.stringify(payload)
-      // })
-      // const responseData = await request.json()      
+      //Testar med fetch istället
+      const request = await fetch('http://localhost:5000/api/auth', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+
+      const responseData = await request.json()      
 
       console.log(responseData)
       console.log("Logged in successful")
