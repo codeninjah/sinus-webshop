@@ -207,8 +207,8 @@ export default {
         this.$router.push('/myaccount')
       }
       
+    },
 
-    }
   },
   beforeMount(){
     if(sessionStorage.getItem("inloggad")){

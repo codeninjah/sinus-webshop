@@ -1,6 +1,7 @@
 <template>
     <div class="wrapper">
         <div v-if="loggedIn">
+            <button @click="testMe">Test</button>
             <button @click="loggOut">Logg out</button>
             <h1>My Account</h1>
             <p>Du är inloggad! {{loggedInUserData}}</p>
@@ -30,7 +31,19 @@ export default {
                 this.loggedIn = false
                 console.log("You logged out!")
                 this.$router.push('/')               
-            }
+            },
+
+        async testMe(){
+        const request = await fetch('http://localhost:5000/api/me', {
+                method: 'GET',
+                headers: {
+                'Content-Type': 'application/json'
+            },
+        //body: JSON.stringify(payload)
+        })
+            const responseData = await request.json() 
+            console.log(responseData)
+        }
         },
         
     created(){
