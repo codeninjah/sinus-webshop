@@ -2,33 +2,28 @@
   <div class="wrapper">
     <div id="nav">
       <div class="overNav">
-       
         <div class="totheleft">
-           <img src="@/assets/sinus-logo.png" alt="" />
-           <router-link to="/" class="home-icon"
-          ><img class="home-icon" src="@/assets/home-icon.png" alt="" /></router-link>
-        
+          <img src="@/assets/sinus-logo.png" alt="" />
+          <router-link to="/" class="home-icon"
+            ><img class="home-icon" src="@/assets/home-icon.png" alt=""
+          /></router-link>
         </div>
 
         <section class="totheright">
-           
           <img class="search" src="@/assets/magnify.png" alt="" />
           <router-link to="/myaccount" class="account-icon"
             ><img class="account-icon" src="@/assets/user.png" alt=""
           /></router-link>
-          <router-link to="/kundkorg" class="cart-icon"
-            >
+          <router-link  to="/Modal" class="cart-icon" >
+          
             <div class="cart-img-wrapper">
-              <img class="cart-icon" src="@/assets/cart-white.png" alt=""/>
-              <span>{{cartLength}}</span>
+              <img @click="$refs.modalName.openModal()"  class="cart-icon" src="@/assets/cart-white.png" alt=""  />
+              <span>{{ cartLength }}</span>
             </div>
-
           </router-link>
           <img src="@/assets/wiggly-sinus.png" alt="" />
         </section>
       </div>
-
-      
 
       <router-link to="/checkout">Checkout</router-link> |
       <router-link to="/loggin">LoggIn</router-link> | |
@@ -38,25 +33,46 @@
       <router-link to="/produktlista">Produktlista</router-link> |
       -->
 
-      
       <router-link to="/authdemo">Auth demo</router-link>
-      
-
     </div>
     <div class="underNav">
       <p>CHRISTMAS SALE <br />60%OFF</p>
     </div>
+     
+    
+
+    
+    <modal ref="modalName">
+      <template v-slot:header>
+        <!-- header delen av modalen ifall vi vill använda den eller fylla i någonting  -->
+      </template>
+
+      
+
+      <template v-slot:footer>
+        <!-- footer delen av modalen ifall vi vill använda den eller fylla i någonting -->
+        <div>
+          <!-- nu stängs modalen ner, men när checkout delen är klar så går den vidare dit. -->
+          <button @click="$refs.modalName.closeModal()">Proceed to checkout</button>
+        
+        </div>
+      </template>
+    </modal>
+  
   </div>
+  
 </template>
 
 <script>
+import Modal from "../components/Modal";
 export default {
   name: "Navigation",
-  computed:{
-    cartLength(){
-      return this.$store.getters.getCartLength
-    }
-  }
+  components: { Modal },
+  computed: {
+    cartLength() {
+      return this.$store.getters.getCartLength;
+    },
+  },
 };
 </script>
 
@@ -91,12 +107,12 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   width: 200px;
-  .cart-img-wrapper{
+  .cart-img-wrapper {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    span{
+    span {
       display: flex;
       justify-content: center;
       align-items: center;

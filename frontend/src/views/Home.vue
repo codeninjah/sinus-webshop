@@ -15,40 +15,43 @@
           <img :src="require(`@/assets/${post.imgFile}`)" />
 
           <span>{{ post.title }}</span>
-         
 
           <!--Printas ej -->
           <div id="myModal" class="lightbox nodisplay">
             <span class="close cursor" v-on:click="closeLightBox()">x</span>
             <div class="lightbox-content">
-              
               <div class="modal">
                 <div class="modal__modalImgUrl">
-                 
                   {{ selectedProduct.shortDesc }}
-                  
-
                 </div>
-                
-                <img width="100px" height="100px" :src="selectedImgFile.imgFile" />
+
+                <img
+                  width="100px"
+                  height="100px"
+                  :src="selectedImgFile.imgFile"
+                />
                 <div class="modal-title">{{ selectedProduct.title }}</div>
                 <div class="modal__modalPrice">{{ selectedProduct.price }}</div>
-               
+
                 <!-- <div class="modal__modalLongDesc">{{ modalLongDesc }}</div> -->
               </div>
             </div>
           </div>
-           <div class="wrapperB">
-          <button class="buttonM"
-            @click="openLightBox(post._id)"
-            :modal-title="post.title">Details</button>
-            </div>
+          <div class="wrapperB">
+            <button
+              class="buttonM"
+              @click="openLightBox(post._id)"
+              :modal-title="post.title"
+            >
+              
+            </button>
+          </div>
         </li>
-        
       </ul>
-      
     </section>
+   
   </div>
+  
 </template>
 
 <script>
@@ -70,8 +73,7 @@ export default {
       price: "",
       //imgUrl: "",
       //imgFile: "",
-      selectedProduct: { title: "", price: "", imgFile: ""  },
-      
+      selectedProduct: { title: "", price: "", imgFile: "" },
     };
   },
 
@@ -102,13 +104,12 @@ export default {
     select(e) {
       console.log(e);
       this.selectedProduct = e;
-      this.addToCart(e)
+      this.addToCart(e);
     },
 
     addToCart(payload) {
-      this.$store.dispatch("addToCart", payload)
-    }
-
+      this.$store.dispatch("addToCart", payload);
+    },
   },
 
   computed: {
@@ -116,14 +117,14 @@ export default {
       return this.$store.state.products;
     },
 
-  selectedImgFile () {
-    return {
-      ...this.selectedProduct, 
-      imgFile: this.selectedProduct.imgFile && require(`@/assets/${this.selectedProduct.imgFile}`)
-    }
-  }
-
-
+    selectedImgFile() {
+      return {
+        ...this.selectedProduct,
+        imgFile:
+          this.selectedProduct.imgFile &&
+          require(`@/assets/${this.selectedProduct.imgFile}`),
+      };
+    },
   },
 };
 </script>
@@ -131,11 +132,10 @@ export default {
 <style lang="scss" scoped>
 .wrapper {
   display: flex;
-  flex-direction: row
-  ;
+  flex-direction: row;
   justify-content: center;
 }
-.wrapperB{
+.wrapperB {
   display: flex;
   justify-content: center;
 }
@@ -154,12 +154,8 @@ export default {
   height: 400px;
   margin: 0%;
   padding: 0%;
-      background-color: #ffffff17;
+  background-color: #ffffff17;
 }
-
-
-
-
 
 .listItems {
   cursor: pointer;
@@ -251,26 +247,25 @@ export default {
   border: 0;
   color: beige;
   padding: 0.5rem 1rem;
-    border-radius: 4%;
-    background-color: rgb(238, 245, 248);
-    transition: background-color 0.1s transform 0.1s;
+  border-radius: 4%;
+  background-color: rgb(238, 245, 248);
+  transition: background-color 0.1s transform 0.1s;
   cursor: pointer;
-   
-    width: 50%;
-    height: 20px;
+
+  width: 50%;
+  height: 20px;
 }
 
-button:hover{
-  background-color: rgb(60,80,140);
+button:hover {
+  background-color: rgb(60, 80, 140);
 }
-button:active{
-  background-color: rgb(30,50,120);
+button:active {
+  background-color: rgb(30, 50, 120);
   transform: scale(0.9);
 }
 
-
-span{
+span {
   color: orange;
-        font-size: 11px;
+  font-size: 11px;
 }
 </style>
