@@ -5,11 +5,11 @@
 <template>
 <div class="wrapper">
   <form @submit.prevent="submit">
-            <input type="text" v-model="email" placeholder="email">
-            <input type="text" v-model="password" placeholder="password">
+            <input type="text" v-model="user.email" placeholder="email">
+            <input type="text" v-model="user.password" placeholder="password">
 
             <div class="info hidden">
-              <input type="text" v-model="name" placeholder="name">
+              <input type="text" v-model="user.name" placeholder="name">
 
             <!--
               <div class="adress">
@@ -40,6 +40,7 @@ export default {
   //components: {LoggInForm},
   data(){return{
     tokenData: null,
+    user : {
     email: '',
     password: '',
     name: '',
@@ -47,8 +48,10 @@ export default {
       street: '',
       zip: '',
       city: ''
+      }
     }
   }},
+
   methods: {
     
     handleLogin(tokenData){
@@ -131,7 +134,7 @@ export default {
       .then(console.log).catch(console.log)
       */
 
-      const payload = {email: this.email, password: this.password, name: this.name}
+      const payload = {email: this.user.email, password: this.user.password, name: this.user.name}
       
       //const responseData = await axios.post('http://localhost:5000/api/auth', payload)
   
@@ -158,13 +161,13 @@ export default {
       const nameBox = document.getElementsByClassName("info")[0]
       nameBox.classList.remove("hidden")
 
-      if(this.email.length > 0 && this.password.length > 0 && this.name.length > 0) {
+      if(this.user.email.length > 0 && this.user.password.length > 0 && this.user.name.length > 0) {
 
       let result = await this.register()
 
-      this.email = ''
-      this.password = ''
-      this.name = ''
+      this.user.email = ''
+      this.user.password = ''
+      this.user.name = ''
 
       nameBox.classList.add("hidden")
       return result
@@ -179,7 +182,7 @@ export default {
     
 
     async submit(){
-      const payload = {email: this.email, password: this.password, name: this.name,}
+      const payload = {email: this.user.email, password: this.user.password, name: this.user.name,}
       
       //const responseData = await axios.post('http://localhost:5000/api/auth', payload)
   
