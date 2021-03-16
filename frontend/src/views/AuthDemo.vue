@@ -85,56 +85,16 @@ export default {
     },
 
     //CODENINJAH WAS HERE
-    //USING AXIOS
       async register(){
-      console.log(this.email) //undefined
-      //byt till "token" från payload
-      
-      /*
-      const token = {email: this.email, password: this.password,
-      name: this.name,
 
-      "address": {
+      const payload = {email: this.user.email, password: this.user.password, name: this.user.name,
+        role: "customer",
+        "address": {
             "street": "Tokitokvägen 4",
             "zip": "123 46",
             "city": "Tokbergaskogen"
         }
-        */
-
-      /*
-      "adress" : {
-            street: this.street,
-            zip: this.zip,
-            city: this.city
-        },
-      */
-
-      //Här får jag fel
-      /*
-      adress: this.address = {
-      street: this.street,
-      zip: this.zip,
-      city: this.city
       }
-      */
-
-    
-
-      //BYGG PÅ MED FÖLJANDE;
-      //https://flaviocopes.com/axios-send-authorization-header/
-      /*
-      const config = {
-        headers: { Authorization: `Bearer ${token}` }
-      };
-      //const bodyParameters = {}
-      const request = await axios.post('http://localhost:5000/api/register', 
-      token,
-      config
-      )      
-      .then(console.log).catch(console.log)
-      */
-
-      const payload = {email: this.user.email, password: this.user.password, name: this.user.name}
       
       //const responseData = await axios.post('http://localhost:5000/api/auth', payload)
   
@@ -148,10 +108,8 @@ export default {
       })
       const responseData = await request.json()
 
-      console.log("Request: ", responseData) // Request undefined
-      //console.log("Config är: ", config) //Object
-      //console.log("Token är", config.headers) //Authorization [object Object]
-      //console.log("Token är", config.headers.Authorization) //Bearer [object Object]
+      console.log("Request: ", responseData) //Invalid credentials
+      return responseData
     },
     
     async showRegisterForm(){
@@ -163,7 +121,7 @@ export default {
 
       if(this.user.email.length > 0 && this.user.password.length > 0 && this.user.name.length > 0) {
 
-      let result = await this.register()
+      const result = await this.register()
 
       this.user.email = ''
       this.user.password = ''
