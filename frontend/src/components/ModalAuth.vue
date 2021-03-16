@@ -19,10 +19,10 @@
         <div class="modal__body">
             <div class="wrapper">
         <h1>Cart</h1>
-        <div>{{Cart}}</div>
+        <div>{{getCart}}</div>
         <h2>These items are ready for checkout</h2>
         
-            <div v-for="product in Cart"
+            <div v-for="product in getCart"
                 :key="product.id">
                 {{product.title}}
                 {{product.price}}
@@ -49,8 +49,7 @@ export default {
   },
 
  computed:{
-  //  en funktion som kallar på getcart funktionen.
-        Cart(){
+        getCart(){
             return this.$store.getters.getCart
         }
     },
