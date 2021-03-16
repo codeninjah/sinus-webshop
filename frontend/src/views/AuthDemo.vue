@@ -187,12 +187,15 @@ export default {
       //const responseData = await axios.post('http://localhost:5000/api/auth', payload)
   
       //Testar med fetch istället
+      //Ändrat från auth till me raden nedan
       const request = await fetch('http://localhost:5000/api/auth', {
-        method: 'POST',
+        //ändrat metod från POST to GET
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(payload)
+        //tog bort body eftersom GET inte stöder det
+        //body: JSON.stringify(payload)
       })
 
       const responseData = await request.json()      
