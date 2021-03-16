@@ -190,20 +190,20 @@ export default {
       //Ändrat från auth till me raden nedan
       const request = await fetch('http://localhost:5000/api/auth', {
         //ändrat metod från POST to GET
-        method: 'GET',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         //tog bort body eftersom GET inte stöder det
-        //body: JSON.stringify(payload)
+        body: JSON.stringify(payload)
       })
 
       const responseData = await request.json()      
-
-      console.log(responseData)
+      console.log("Responsedata: ", responseData)
+      console.log("Testar med responseData", responseData.user.name)
       console.log("Logged in successful")
       
-      sessionStorage.setItem("inloggad", JSON.stringify(payload))
+      sessionStorage.setItem("inloggad", JSON.stringify(responseData))
 
       if(sessionStorage.getItem("inloggad")){
         console.log("setItem successfull!")

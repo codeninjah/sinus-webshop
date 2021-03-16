@@ -5,8 +5,8 @@
             <button @click="loggOut">Logg out</button>
             <h1>My Account</h1>
             <p>Du är inloggad! {{loggedInUserData}}</p>
-            <p>User Name: {{userDetails.name}}</p>
-            <p>User adress: {{user}}</p>
+            <p>User Name: {{loggedInUserData.user.name}}</p>
+            <p>User adress: {{loggedInUserData.user}}</p>
         </div>
         <div v-if="!loggedIn">
             <h1>Du är inte inloggad!</h1>
