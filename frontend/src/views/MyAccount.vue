@@ -6,6 +6,7 @@
             <h1>My Account</h1>
             <p>Du är inloggad! {{loggedInUserData}}</p>
             <p>User Name: {{userDetails.name}}</p>
+            <p>User adress: {{user}}</p>
         </div>
         <div v-if="!loggedIn">
             <h1>Du är inte inloggad!</h1>
@@ -43,6 +44,8 @@ export default {
         })
             const responseData = await request.json() 
             console.log(responseData)
+            //TESTA FÖLJANDE:
+            //console.log(responseData)
         }
         },
         
@@ -61,6 +64,7 @@ export default {
 
                 console.log("This route: " + this.$route)
                 console.log("This router: " + this.$router)
+                //console.log("More user stuff: ", this.user.adress)
                 }
             },
 
