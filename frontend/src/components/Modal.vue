@@ -42,7 +42,7 @@
 
 <script>
 export default {
-  name: "Kundkorg",
+  name: "Modal",
   data() {
     return {
       show: false
