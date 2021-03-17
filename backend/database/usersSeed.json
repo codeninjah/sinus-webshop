@@ -20,5 +20,7 @@
             "city": "Tokbergaskogen"
         },
         "orderHistory": []
-    }
+    },
+
+    {"email":"a@a.a","name":"A","address":{"zip":"123 46","city":"Tokbergaskogen","street":"Tokitokvägen 4"},"role":"customer","password":"$2a$10$FwFzajpmFzdFnukL2C4B6Ose.8B3Cvc59Hcgx771bWQwt55mHOCuC","orderHistory":[],"_id":"xx4bQql2rwOc4OeD"}
 ]
