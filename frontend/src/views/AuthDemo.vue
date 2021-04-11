@@ -45,10 +45,10 @@ export default {
     password: '',
     name: 'Code Ninjah',
     adress: {
-      street: "Tokitokvägen 4",
-      zip: "123 46",
-      city: "Tokbergaskogen"
-      }
+      street: 'Tokitokvägen 4',
+      zip: '123 46',
+      city: 'Tokbergaskogen'
+      },
     }
   }},
 
@@ -87,26 +87,25 @@ export default {
     //CODENINJAH WAS HERE
     //Får errorcode 403
     //https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
-      async register(){
 
+    //UPDATE
+    //nu blir det errorcode 400, vilket är bättre
+    //https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+
+      async register(){
+        //Bara kör lite test,
+        //I console ser man att "No address provided"
+        //Kolla upp det tillsammans med error koden nedan (länken för 400)
+        
+      const adresstest = {street: "Tokitovägen 4", zip: '123 46', city: 'CDMX'}
       const payload = {email: this.user.email, password: this.user.password, name: this.user.name,
-      adress: this.user.adress}
+      adress: adresstest}
         /*
           { "street": "Tokitokvägen 4",
             "zip": "123 46",
             "city": "Tokbergaskogen"
             }
-            */
-        /*
-        "address": {
-            "street": "Tokitokvägen 4",
-            "zip": "123 46",
-            "city": "Tokbergaskogen"
-        }
-      }
-      */
-      
-      //const responseData = await axios.post('http://localhost:5000/api/auth', payload)
+      */      
   
       //Testar med fetch istället
       const request = await fetch('http://localhost:5000/api/register', {
