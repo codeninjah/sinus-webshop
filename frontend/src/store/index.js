@@ -4,8 +4,10 @@ import axios from 'axios'
 
 import * as API from '../api/index'
 
+
 import products from './products.store'
 import user from './user.store'
+
 
 Vue.use(Vuex)
 
@@ -67,6 +69,7 @@ export default new Vuex.Store({
     },
 
 },
+
   modules: {
     productsModule : products,
     userModule : user

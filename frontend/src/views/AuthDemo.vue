@@ -43,11 +43,11 @@ export default {
     user : {
     email: '',
     password: '',
-    name: '',
+    name: 'Code Ninjah',
     adress: {
-      street: '',
-      zip: '',
-      city: ''
+      street: "Tokitokvägen 4",
+      zip: "123 46",
+      city: "Tokbergaskogen"
       }
     }
   }},
@@ -85,21 +85,31 @@ export default {
     },
 
     //CODENINJAH WAS HERE
+    //Får errorcode 403
+    //https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
       async register(){
 
       const payload = {email: this.user.email, password: this.user.password, name: this.user.name,
-        role: "customer",
+      adress: this.user.adress}
+        /*
+          { "street": "Tokitokvägen 4",
+            "zip": "123 46",
+            "city": "Tokbergaskogen"
+            }
+            */
+        /*
         "address": {
             "street": "Tokitokvägen 4",
             "zip": "123 46",
             "city": "Tokbergaskogen"
         }
       }
+      */
       
       //const responseData = await axios.post('http://localhost:5000/api/auth', payload)
   
       //Testar med fetch istället
-      const request = await fetch('http://localhost:5000/api/auth', {
+      const request = await fetch('http://localhost:5000/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -108,7 +118,7 @@ export default {
       })
       const responseData = await request.json()
 
-      console.log("Request: ", responseData) //Invalid credentials
+      console.log("Request: ", responseData) //No address provided
       return responseData
     },
     
@@ -126,7 +136,7 @@ export default {
       this.user.email = ''
       this.user.password = ''
       this.user.name = ''
-
+      
       nameBox.classList.add("hidden")
       return result
     
