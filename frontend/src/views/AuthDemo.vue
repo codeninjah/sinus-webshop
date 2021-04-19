@@ -45,12 +45,12 @@ export default {
     user : {
     email: '',
     password: '',
-    name: '',
+    name: 'Code Ninjah',
     adress: {
-      street: '',
-      zip: '',
-      city: ''
-      }
+      street: 'Tokitokvägen 4',
+      zip: '123 46',
+      city: 'Tokbergaskogen'
+      },
     }
   }},
 
@@ -87,21 +87,30 @@ export default {
     },
 
     //CODENINJAH WAS HERE
-      async register(){
+    //Får errorcode 403
+    //https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
 
+    //UPDATE
+    //nu blir det errorcode 400, vilket är bättre
+    //https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+
+      async register(){
+        //Bara kör lite test,
+        //I console ser man att "No address provided"
+        //Kolla upp det tillsammans med error koden nedan (länken för 400)
+        
+      const adresstest = {street: "Tokitovägen 4", zip: '123 46', city: 'CDMX'}
       const payload = {email: this.user.email, password: this.user.password, name: this.user.name,
-        role: "customer",
-        "address": {
-            "street": "Tokitokvägen 4",
+      adress: adresstest}
+        /*
+          { "street": "Tokitokvägen 4",
             "zip": "123 46",
             "city": "Tokbergaskogen"
-        }
-      }
-      
-      //const responseData = await axios.post('http://localhost:5000/api/auth', payload)
+            }
+      */      
   
       //Testar med fetch istället
-      const request = await fetch('http://localhost:5000/api/auth', {
+      const request = await fetch('http://localhost:5000/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -110,7 +119,7 @@ export default {
       })
       const responseData = await request.json()
 
-      console.log("Request: ", responseData) //Invalid credentials
+      console.log("Request: ", responseData) //No address provided
       return responseData
     },
     
@@ -128,7 +137,7 @@ export default {
       this.user.email = ''
       this.user.password = ''
       this.user.name = ''
-
+      
       nameBox.classList.add("hidden")
       return result
     
