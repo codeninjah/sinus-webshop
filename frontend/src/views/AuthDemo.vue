@@ -4,6 +4,7 @@
 
 <template>
 <div class="wrapper">
+  <ModalAuth />
   <form @submit.prevent="submit">
             <input type="text" v-model="user.email" placeholder="email">
             <input type="text" v-model="user.password" placeholder="password">
@@ -36,8 +37,9 @@
 <script>
 //import axios from 'axios'
 //import LoggInForm from '@/components/LoggInForm'
+
 export default {
-  //components: {LoggInForm},
+  components: {},
   data(){return{
     tokenData: null,
     user : {

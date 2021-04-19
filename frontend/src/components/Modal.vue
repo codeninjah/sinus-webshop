@@ -27,6 +27,8 @@
                 :key="product.id">
                 {{product.title}}
                 {{product.price}}
+                  
+                
             </div>
     </div>
           <slot name="body"/>
