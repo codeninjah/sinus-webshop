@@ -10,7 +10,7 @@
         </div>
         <div v-if="!loggedIn">
             <h1>Du är inte inloggad!</h1>
-            <router-link to="/authdemo"><button>Till inloggning</button></router-link>
+            
         </div>
     </div>
 </template>

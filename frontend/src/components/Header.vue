@@ -1,28 +1,23 @@
 <template>
-    <div class="wrapper">
-        <Navigation />
-    </div>
+  <div class="wrapper">
+    <Navigation />
+  </div>
 </template>
 
-
 <script>
-import Navigation from "@/components/Navigation.vue"
+import Navigation from "@/components/Navigation.vue";
 
 export default {
-    name: "Header",
+  name: "Header",
 
-    components: {
-        Navigation
-    }
-    
-}
+  components: {
+    Navigation,
+  },
+};
 </script>
 
-
 <style scoped>
-
-    .wrapper{
-        padding: 10px 0;
-    }
-
+.wrapper {
+  padding: 10px 0;
+}
 </style>
