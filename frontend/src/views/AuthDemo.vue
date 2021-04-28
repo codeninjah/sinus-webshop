@@ -1,4 +1,4 @@
-<!-- Kod från David
+<!-- Kod från David Lundholm
     Finns på: https://github.com/iths-javascript/auth-demo/blob/main/App.vue
 -->
 
