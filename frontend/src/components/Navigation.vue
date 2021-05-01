@@ -27,13 +27,15 @@
 
       <router-link to="/checkout">Checkout</router-link> |
       <router-link to="/loggin">LoggIn</router-link> | |
+      <router-link to="/Register">Registration</router-link>
 
       <!--
       <router-link to="/produkt">Produkt</router-link> |
       <router-link to="/produktlista">Produktlista</router-link> |
       -->
 
-      <router-link to="/authdemo">Auth demo</router-link>
+      
+      
     </div>
     <div class="underNav">
       <p>CHRISTMAS SALE <br />60%OFF</p>

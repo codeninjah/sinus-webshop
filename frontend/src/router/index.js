@@ -7,8 +7,8 @@ import LoggIn from '../views/LoggIn.vue'
 import MyAccount from '../views/MyAccount.vue'
 //import ProduktInfo from '../views/ProduktInfo.vue'
 //import ProduktLista from '../views/ProduktLista.vue'
-import AuthDemo from '../views/AuthDemo.vue'
 
+import Register from '../views/Register.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -16,6 +16,11 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register
   },
   
   {
@@ -50,11 +55,7 @@ const routes = [
     component: ProduktLista
   },
   */
-  {
-    path: '/authdemo',
-    name: 'AuthDemo',
-    component: AuthDemo
-  },
+ 
   
 ]
 
