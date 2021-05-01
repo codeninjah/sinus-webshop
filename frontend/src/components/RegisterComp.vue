@@ -3,14 +3,14 @@
     <h2>{{ registerHeader }}</h2>
 
     <form @submit.prevent class="register-form">
-      <label for="name">Namn</label>
+      <label for="name">Name</label>
       <input
         type="text"
         name="name"
         v-model="newUser.firstname"
         v-on:change="$emit('validateFirstname', newUser.firstname)"
       />
-      <label class="text-align" for="lastname">Efternamn</label>
+      <label class="text-align" for="lastname">Lastname</label>
       <input
         type="text"
         name="lastname"
@@ -25,21 +25,21 @@
         v-model="newUser.address.street"
         v-on:change="$emit('validateAddress', newUser.address.street)"
       />
-      <label for="postcode">Postkod</label>
+      <label for="postcode">Postal Code</label>
       <input
         type="text"
         name="postcode"
         v-model="newUser.address.zip"
         v-on:change="$emit('validateZip', newUser.address.zip)"
       />
-      <label class="text-align" for="city">Postort</label>
+      <label class="text-align" for="city">City</label>
       <input
         type="text"
         name="city"
         v-model="newUser.address.city"
         v-on:change="$emit('validateCity', newUser.address.city)"
       />
-      <label for="email">Epost</label>
+      <label for="email">E-mail</label>
       <input
         class="fullrow"
         type="text"
@@ -47,7 +47,7 @@
         v-model="newUser.email"
         v-on:change="$emit('validateEmail', newUser.email)"
       />
-      <label v-if="isRegister" for="password">Lösenord</label>
+      <label v-if="isRegister" for="password">Password</label>
       <input
         v-if="isRegister"
         class="fullrow"
@@ -115,12 +115,12 @@ export default {
       console.log(userAsArray);
       for (let i = 0; i < userAsArray.length; i++) {
         if (userAsArray[i] === "") {
-          alert("Kontrollera uppgifterna");
+          alert("Fill out form");
           return false;
         }
-      }
-      return true;
-    },
+    }
+    return true; 
+  }
   },
 };
 </script>
@@ -129,7 +129,7 @@ export default {
 .register-comp-wrapper {
   display: flex;
   flex-direction: column;
-
+  align-items: center;
   color: white;
   width: 400px;
   height: auto;
@@ -147,25 +147,24 @@ export default {
   }
 
   .register-form {
-    display: grid;
-    grid-template-columns: 80px 1fr 80px 1fr;
-    gap: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     align-items: center;
-    .fullrow {
-      grid-column: 2/5;
-    }
+    
     input {
-      padding: 8px;
+      padding: 10px;
       border: none;
       outline: none;
       border-radius: 5px;
     }
     .default-btn {
       justify-self: center;
-      grid-column: 1/5;
+      margin-top: 20px;
       align-self: center;
       width: 160px;
       cursor: pointer;
+      background-color: wheat;
     }
     .text-align {
       text-align: center;

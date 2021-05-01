@@ -1,48 +1,57 @@
 <template>
-   <div class="modal-background">
-  <div class="login-comp middle-login">
-    <div class="login-comp-wrapper" >
-      <div class="login-h2-and-btn">
-        <h2>Logga in</h2>
-        <button class="close-btn" @click="$emit('loginToggle')"></button>
+  <div class="modal-background">
+    <div class="login-comp middle-login">
+      <div class="login-comp-wrapper">
+        <div class="login-h2-and-btn">
+          <h2>Logga in</h2>
+          <button class="close-btn" @click="$emit('loginToggle')"></button>
+        </div>
+        <p>Enter Email & password:</p>
+        <form @submit.prevent class="login-form">
+          <label for="email">Email</label>
+          <input type="email" name="email" v-model="email" />
+          <label for="password">Password</label>
+          <input type="password" name="password" v-model="password" />
+          <input
+            class="default-btn"
+            type="submit"
+            value="Logg in"
+            @click="checkLogin"
+          />
+          <input
+            class="default-btn"
+            type="submit"
+            value="Create account"
+            @click="toRegister"
+          />
+        </form>
       </div>
-      <p>Ange Email och lösenord:</p>
-      <form @submit.prevent class="login-form">
-        <label for="email">Email</label>
-        <input type="email" name="email" v-model="email">
-        <label for="password">Password</label>
-        <input type="password" name="password" v-model="password">
-        <input class="default-btn" type="submit" value="LOGGA IN" @click="checkLogin">
-        <input class="default-btn" type="submit" value="SKAPA KONTO" @click="toRegister">  
-      </form>
     </div>
   </div>
-</div>
 </template>
 
-
 <script>
-
 //Davids kod
 //https://github.com/iths-javascript/auth-demo/blob/main/LoginForm.vue
 
 //import axios from 'axios'
 export default {
-  
-   data() {
+  data() {
     return {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
       userOnline: true,
       showProfile: false,
-      username: ''
-    }
+      username: "",
+    };
   },
   props: {
-    profileData: Object
+    profileData: Object,
   },
 
-  methods:{
+  methods: {
+
+    
     /*
     async submit(){
       const payload = {email: this.email, password: this.password}
@@ -61,52 +70,49 @@ export default {
     }
     */
 
-
-   checkLogin() {
+    checkLogin() {
       let userLogin = {
         email: this.email,
-        password: this.password
+        password: this.password,
       };
       if (this.loginValidation(userLogin)) {
-        this.$store.dispatch('checkLogin', userLogin);
-        this.email = '';
-        this.password = '';
-        this.$emit('closeLogin');
+        this.$store.dispatch("checkLogin", userLogin);
+        this.email = "";
+        this.password = "";
+        this.$emit("closeLogin");
       }
     },
     loginValidation(userLogin) {
-      if (userLogin.email === '' || userLogin.password === '') {
-        alert('Kontrollera inloggningsuppgifterna');
+      if (userLogin.email === "" || userLogin.password === "") {
+        alert("Kontrollera inloggningsuppgifterna");
         return false;
       }
       return true;
-    }, 
+    },
 
     logOut() {
       this.userOnline = false;
-      this.$store.commit('logOutUser');
+      this.$store.commit("logOutUser");
       this.noUser = true;
     },
 
     toRegister() {
       this.noUser = false;
       this.userOnline = false;
-      this.$emit('closeLogin');
-      if (this.$route.path !== '/register') {
-        this.$router.push('/register');
+      this.$emit("closeLogin");
+      if (this.$route.path !== "/register") {
+        this.$router.push("/register");
       }
-    }    
-  }
-}
+    },
+  },
+};
 </script>
 
-
 <style lang="scss" scoped>
-
 .modal-background {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, .5);
+  background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   left: 0%;
   top: 0%;
@@ -114,73 +120,83 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
 .profile-btn {
- width: 26px;
- height: 30px;
- background-color: transparent;
- 
- background-size: cover;
+  width: 26px;
+  height: 30px;
+  background-color: transparent;
+
+  background-size: cover;
 }
 
 .online-user {
-  color: red;
-  background: blue;
+  color: black;
+  background: rgb(185, 92, 108);
 }
 
 .login-comp {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: red;
-  padding: 64px;
+  background-color: rgb(187, 187, 187);
+  border-radius: 10px;
+  padding: 10px;
 }
+
 .login-comp-wrapper {
-  background-color: blue;
-  color: red;
-  width: 624px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(94, 94, 94);
+  color: #010000;
+  width: 400px;
   height: 432px;
   padding: 32px;
   margin: auto;
-  font-family: font2;
+  
+
   .close-btn {
     align-self: start;
     margin-left: auto;
     width: 45px;
     height: 45px;
-    background-image:  url('../assets/close-icon.png');
+    background-image: url("../assets/close-icon.png");
     background-size: cover;
     border: none;
-    background-color: black;
+    border-radius: 40px;
     cursor: pointer;
   }
   .login-h2-and-btn {
     display: flex;
     justify-content: space-between;
   }
+
   h2 {
-    font-family: font1;
-    font-weight: 100;
-    font-size: 40px;
     
+    font-weight:50;
+    font-size: 30px;
   }
   p {
     margin: 16px 0 32px 0;
   }
 }
+
 .login-form {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 24px;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  
+  gap: 10px;
+  
   input {
-    padding: 8px;
+    width: 400px;
+    padding: 5px;
     border: none;
     outline: none;
     border-radius: 5px;
   }
+
   .default-btn {
     justify-self: center;
-    grid-column: 1/3;
+    
     align-self: center;
     width: 160px;
     cursor: pointer;
