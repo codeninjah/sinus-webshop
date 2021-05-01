@@ -4,7 +4,8 @@
       <div class="login-comp-wrapper">
         <div class="login-h2-and-btn">
           <h2>Logga in</h2>
-          <button class="close-btn" @click="$emit('loginToggle')"></button>
+          <button class="close-btn" @click="toRegister"></button>
+          
         </div>
         <p>Enter Email & password:</p>
         <form @submit.prevent class="login-form">
@@ -36,6 +37,7 @@
 
 //import axios from 'axios'
 export default {
+  
   data() {
     return {
       email: "",
@@ -51,6 +53,7 @@ export default {
 
   methods: {
 
+    
     
     /*
     async submit(){
@@ -69,7 +72,7 @@ export default {
       this.$emit('login', responseData)
     }
     */
-
+     
     checkLogin() {
       let userLogin = {
         email: this.email,
@@ -79,7 +82,7 @@ export default {
         this.$store.dispatch("checkLogin", userLogin);
         this.email = "";
         this.password = "";
-        this.$emit("closeLogin");
+        
       }
     },
     loginValidation(userLogin) {
@@ -90,22 +93,21 @@ export default {
       return true;
     },
 
-    logOut() {
-      this.userOnline = false;
-      this.$store.commit("logOutUser");
-      this.noUser = true;
-    },
-
+    
     toRegister() {
       this.noUser = false;
       this.userOnline = false;
-      this.$emit("closeLogin");
+      
       if (this.$route.path !== "/register") {
         this.$router.push("/register");
       }
     },
+
+    
   },
 };
+
+
 </script>
 
 <style lang="scss" scoped>
@@ -129,16 +131,13 @@ export default {
   background-size: cover;
 }
 
-.online-user {
-  color: black;
-  background: rgb(185, 92, 108);
-}
+
 
 .login-comp {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(187, 187, 187);
+  background-color: rgb(221, 205, 175);
   border-radius: 10px;
   padding: 10px;
 }
@@ -146,7 +145,7 @@ export default {
 .login-comp-wrapper {
   display: flex;
   flex-direction: column;
-  background-color: rgb(94, 94, 94);
+  background-color: wheat ;
   color: #010000;
   width: 400px;
   height: 432px;
@@ -183,7 +182,6 @@ export default {
 .login-form {
   display: flex;
   flex-direction: column;
-  
   gap: 10px;
   
   input {
@@ -195,10 +193,12 @@ export default {
   }
 
   .default-btn {
-    justify-self: center;
+    background-color: rgb(226, 196, 141);
     
+    justify-self: center;
+    margin: 10px;
     align-self: center;
-    width: 160px;
+    width: 140px;
     cursor: pointer;
   }
 }

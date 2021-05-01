@@ -20,13 +20,14 @@
         <div class="modal__body">
             <div class="wrapper">
         <h1>Cart</h1>
-        <div>{{getCart}}</div>
+        
         <h2>These items are ready for checkout</h2>
         
             <div v-for="product in getCart"
                 :key="product.id">
                 {{product.title}}
                 {{product.price}}
+                
                   
                 
             </div>

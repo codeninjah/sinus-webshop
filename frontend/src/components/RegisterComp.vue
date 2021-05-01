@@ -84,8 +84,8 @@ export default {
     };
   },
   created() {
-    let user = this.$store.state.user;
-    if (user._id !== undefined) {
+     let user = this.$store.state.user;
+    if (user._id!== undefined) {
       this.newUser = user;
       let name = user.name.split(" ");
       this.newUser.firstname = name[0];

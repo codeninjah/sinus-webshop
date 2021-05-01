@@ -55,6 +55,7 @@ export default new Vuex.Store({
     CURRENT_USER(state, payload) {
       state.user = payload;
     },
+    
   },
   actions: {
     getProducts({ commit }) {
@@ -81,7 +82,7 @@ export default new Vuex.Store({
         context.state.user = user;
        
       }
-      console.log(context)
+      
     },
     clearLocalstorage() {
       localStorage.removeItem('user');
@@ -92,7 +93,7 @@ export default new Vuex.Store({
       const token = userCheck.data.token;
 
       if (userCheck.status === 200) {
-        alert("LOGGAT IN");
+        alert("Logged in");
         setToken(token);
         const userDB = await get(USER_URL);
         context.state.user = userDB;
@@ -106,13 +107,12 @@ export default new Vuex.Store({
     async registerUser(context, newUser) {
       const response = await post(REGISTER_URL, newUser);
       if (response.status === 200) {
-        alert("Du är registrerad!");
+        alert("Success");
       }
       else {
-        alert("Något gick fel... :(");
+        alert("Something went wrong");
       }
-      //A must...
-      console.log(context);
+      
     },
     
     
