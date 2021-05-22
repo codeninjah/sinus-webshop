@@ -42,12 +42,17 @@
               class="buttonM"
               @click="openLightBox(post._id)"
               :modal-title="post.title"
-            >
+            >X
               
             </button>
+            
+            
           </div>
         </li>
       </ul>
+        <div class="addToCartText">
+              <p class="addCart">Press a button to add to cart!</p>
+            </div>
     </section>
    
   </div>
@@ -102,14 +107,16 @@ export default {
     },
 
     select(e) {
-      console.log(e);
+      console.log(e.price);
       this.selectedProduct = e;
       this.addToCart(e);
+      
     },
 
     addToCart(payload) {
       this.$store.dispatch("addToCart", payload);
-    },
+      
+      },
   },
 
   computed: {
@@ -243,17 +250,25 @@ export default {
 }
 
 .buttonM {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
   outline: none;
   border: 0;
   color: beige;
   padding: 0.5rem 1rem;
-  border-radius: 4%;
-  background-color: rgb(238, 245, 248);
+  border-radius: 10%;
+  background-color: wheat;
   transition: background-color 0.1s transform 0.1s;
   cursor: pointer;
 
   width: 50%;
   height: 20px;
+}
+
+.addCart{
+  color: black;
 }
 
 button:hover {

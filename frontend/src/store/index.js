@@ -1,12 +1,9 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
-import { setToken} from '@/api/index.js';
-import {LOGIN_URL, REGISTER_URL, USER_URL } from '@/api/index.js'
-import { get, post} from '@/api/index.js'
-import products from "./products.store";
-import user from "./user.store";
-
+import { setToken } from "@/api/index.js";
+import { LOGIN_URL, REGISTER_URL, USER_URL } from "@/api/index.js";
+import { get, post } from "@/api/index.js";
 
 
 
@@ -18,9 +15,9 @@ const defaultUser = {
   address: {
     street: "",
     zip: "",
-    city: ""
-  }
-}
+    city: "",
+  },
+};
 
 export default new Vuex.Store({
   state: {
@@ -34,13 +31,15 @@ export default new Vuex.Store({
       return state.products.find((prod) => id == prod.id);
     },
     getCartLength: (state) => state.cart.length,
-
     getCart: (state) => state.cart,
 
+    
+    
     //user stuff
     getUser(state) {
       return state.user;
     },
+
   },
 
   mutations: {
@@ -49,13 +48,11 @@ export default new Vuex.Store({
     },
     ADD_TO_CART(state, payload) {
       state.cart.push(payload);
-      console.log(state.cart);
     },
     //User stuff
     CURRENT_USER(state, payload) {
       state.user = payload;
     },
-    
   },
   actions: {
     getProducts({ commit }) {
@@ -74,21 +71,19 @@ export default new Vuex.Store({
 
     //HÄR BÖRJAR JAG SKISSA PÅ ATT FÅ FRAM INLOGGAD USER
     checkLocalstorage(context) {
-      if (localStorage.getItem('token') !== null) {
-        let token = localStorage.getItem('token');
+      if (localStorage.getItem("token") !== null) {
+        let token = localStorage.getItem("token");
         setToken(token);
-        let user = localStorage.getItem('user');
+        let user = localStorage.getItem("user");
         user = JSON.parse(user);
         context.state.user = user;
-       
       }
-      
     },
     clearLocalstorage() {
-      localStorage.removeItem('user');
-      localStorage.removeItem('token');
+      localStorage.removeItem("user");
+      localStorage.removeItem("token");
     },
-    async checkLogin(context, userLogin) {        
+    async checkLogin(context, userLogin) {
       const userCheck = await post(LOGIN_URL, userLogin);
       const token = userCheck.data.token;
 
@@ -98,30 +93,21 @@ export default new Vuex.Store({
         const userDB = await get(USER_URL);
         context.state.user = userDB;
 
-        localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify(userDB));
-
-        
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(userDB));
       }
     },
     async registerUser(context, newUser) {
       const response = await post(REGISTER_URL, newUser);
       if (response.status === 200) {
         alert("Success");
-      }
-      else {
+      } else {
         alert("Something went wrong");
       }
-      
     },
-    
-    
-
   },
 
   modules: {
-    productsModule: products,
-    userModule: user,
+    
   },
 });
-

@@ -72,10 +72,16 @@ export default {
   components: { Modal },
   computed: {
     cartLength() {
+      
       return this.$store.getters.getCartLength;
+      
     },
+   
+    
   },
+  
 };
+
 </script>
 
 <style lang="scss">
