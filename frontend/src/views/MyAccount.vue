@@ -5,8 +5,8 @@
             <button @click="loggOut">Logg out</button>
             <h1>My Account</h1>
             <p>Du är inloggad! {{loggedInUserData}}</p>
-            <p>User Name: {{loggedInUserData.user.name}}</p>
-            <p>User adress: {{loggedInUserData.user}}</p>
+            <p>User Name: {{loggedInUserData.name}}</p>
+            <p>User adress (city): {{loggedInUserData.address.city}}</p>
         </div>
         <div v-if="!loggedIn">
             <h1>Du är inte inloggad!</h1>
@@ -28,10 +28,16 @@ export default {
     
     methods: {
         loggOut(){
-            sessionStorage.removeItem("inloggad")
+
+            //this.$store.dispatch('clearLocalStorage')
+
+            
+            localStorage.removeItem("user")
+            localStorage.removeItem("token")
                 this.loggedIn = false
                 console.log("You logged out!")
-                this.$router.push('/')               
+                this.$router.push('/')   
+                       
             },
 
         async testMe(){
@@ -50,14 +56,18 @@ export default {
         },
         
     created(){
-            if(sessionStorage.getItem("inloggad")){
+            if(localStorage.getItem("token") && localStorage.getItem("user")){
                 this.loggedIn = true
                 console.log("MyAccounts vy getItem successfull!")
                 //FÖLJANDE RAD BEHÖVER ERSÄTTAS/BYGGAS PÅ
                 //this.$store.dispatch("getUser")
                 // Retrieve the object from storage
 
-                const loggedInUser = sessionStorage.getItem('inloggad');
+                //DE FÖLJANDE 2 RADERNA ÄR FRÅN VUEX
+                //localStorage.setItem("token", token);
+                //localStorage.setItem("user", JSON.stringify(userDB));
+
+                const loggedInUser = localStorage.getItem('user');
                 this.loggedInUserData = JSON.parse(loggedInUser)
                 
                 console.log('inloggadUser: ', JSON.parse(loggedInUser));

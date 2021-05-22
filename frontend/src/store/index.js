@@ -4,6 +4,7 @@ import axios from "axios";
 import { setToken } from "@/api/index.js";
 import { LOGIN_URL, REGISTER_URL, USER_URL } from "@/api/index.js";
 import { get, post } from "@/api/index.js";
+//import VueRouter from 'vue-router';
 
 
 
@@ -95,6 +96,7 @@ export default new Vuex.Store({
 
         localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(userDB));
+        //this.$router.push("/myaccount");
       }
     },
     async registerUser(context, newUser) {
