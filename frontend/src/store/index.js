@@ -33,8 +33,6 @@ export default new Vuex.Store({
     },
     getCartLength: (state) => state.cart.length,
     getCart: (state) => state.cart,
-
-    
     
     //user stuff
     getUser(state) {
@@ -68,6 +66,15 @@ export default new Vuex.Store({
     },
     addToCart({ commit }, payload) {
       commit("ADD_TO_CART", payload);
+    },
+
+    //Jobbar med att få fram nummer av varje enskilt produkt
+    getNumberOfEachProduct(){
+        var counts = {};
+        var aarr = ['Alex','Alex','Alex','Abbas','Abbas']//context.getters.getCart //Här måste det ändras för att få fram cart
+        aarr.forEach(x=>counts[x]=(counts[x] || 0)+1 );
+        //console.log("Alex och Abbas RULES!")
+        console.log(counts)
     },
 
     //HÄR BÖRJAR JAG SKISSA PÅ ATT FÅ FRAM INLOGGAD USER
@@ -107,6 +114,7 @@ export default new Vuex.Store({
         alert("Something went wrong");
       }
     },
+
   },
 
   modules: {

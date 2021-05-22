@@ -26,9 +26,7 @@
             <div v-for="product in getCart"
                 :key="product.id">
                 {{product.title}}
-                {{product.price}}
-                
-                  
+                {{product.price}}              
                 
             </div>
     </div>
@@ -55,7 +53,7 @@ export default {
  computed:{
         getCart(){
             return this.$store.getters.getCart
-        }
+        },
     },
 
   methods: {

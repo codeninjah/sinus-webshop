@@ -8,6 +8,7 @@
                 {{product.price}}
             </li>
         </ul>
+        <button @click="countProducts">Alex</button>
     </div>
 </template>
 
@@ -19,8 +20,20 @@ export default {
     computed:{
         getCart(){
             return this.$store.getters.getCart
-        }
+        },
+
     },
+
+    //This is not working
+    
+    
+    methods: {
+         countProducts(){
+          return this.$store.dispatch("getNumberOfEachProduct")
+        }
+        
+    }
+    
 }
 
 </script>
