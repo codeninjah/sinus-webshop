@@ -75,6 +75,7 @@ export default new Vuex.Store({
         aarr.forEach(x=>counts[x]=(counts[x] || 0)+1 );
         //console.log("Alex och Abbas RULES!")
         console.log(counts)
+        
     },
 
     //HÄR BÖRJAR JAG SKISSA PÅ ATT FÅ FRAM INLOGGAD USER

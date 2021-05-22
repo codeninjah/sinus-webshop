@@ -42,7 +42,7 @@
               class="buttonM"
               @click="openLightBox(post._id)"
               :modal-title="post.title"
-            >X
+            >Add
               
             </button>
             
@@ -258,8 +258,8 @@ export default {
   border: 0;
   color: beige;
   padding: 0.5rem 1rem;
-  border-radius: 10%;
-  background-color: wheat;
+  border-radius: 30%;
+  background-color: rgb(4, 8, 61);
   transition: background-color 0.1s transform 0.1s;
   cursor: pointer;
 
