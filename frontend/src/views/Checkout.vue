@@ -8,7 +8,10 @@
                 {{product.price}}
             </li>
         </ul>
-        <button @click="countProducts">Alex</button>
+        <div class="btnWrapper">
+
+        <button class="checkoutBtn" @click="countProducts">Purchase</button>
+        </div>
     </div>
 </template>
 
@@ -40,5 +43,11 @@ export default {
 
 
 <style scoped>
+
+.checkoutBtn{
+    width: 100px;
+    border-radius: 10%;
+        margin-left: 39px;
+}
 
 </style>
