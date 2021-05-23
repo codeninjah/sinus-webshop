@@ -70,13 +70,26 @@ export default new Vuex.Store({
 
     //Jobbar med att få fram nummer av varje enskilt produkt
     getNumberOfEachProduct(){
-        var counts = {};
-        var aarr = ['Alex','Alex','Alex','Abbas','Abbas']//context.getters.getCart //Här måste det ändras för att få fram cart
-        aarr.forEach(x=>counts[x]=(counts[x] || 0)+1 );
-        //console.log("Alex och Abbas RULES!")
-        console.log(counts)
+        
+        let loot = this.state.cart//context.getters.getCart //Här måste det ändras för att få fram cart
+       
+        let sum = []
+       for(let i=0; i<loot.length; i++){
+        // let count = i + ": " + loot[i].price;
+        let count = loot[i].price;
+        sum.push(count)
+        let final = sum.reduce((a, b) => a + b, 0)
+        
+        console.log(final)
+      }
         
     },
+        
+        
+        
+        
+        
+        
 
     //HÄR BÖRJAR JAG SKISSA PÅ ATT FÅ FRAM INLOGGAD USER
     checkLocalstorage(context) {
@@ -119,6 +132,6 @@ export default new Vuex.Store({
   },
 
   modules: {
-    
+   
   },
 });
