@@ -107,7 +107,7 @@ export default {
     },
 
     select(e) {
-      console.log(e.price);
+      // console.log(e.price);
       this.selectedProduct = e;
       this.addToCart(e);
       
