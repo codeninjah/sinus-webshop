@@ -33,21 +33,16 @@
 
 
 <script>
-
 export default {
     name: "Checkout",
-
     computed:{
         getCart(){
             return this.$store.getters.getCart
         },
-
         getFinal(){
             return this.$store.getters.getFinal
         }
-
     },
-
     //This is not working
     
     
@@ -57,21 +52,17 @@ export default {
         }
         
     }
-
     
 }
-
 </script>
 
 
 <style scoped>
-
 .checkoutBtn{
     width: 100px;
     border-radius: 10%;
         margin-left: 39px;
 }
-
 .imgList {
   display: flex;
   flex-direction: row;
@@ -80,7 +71,6 @@ export default {
   padding: 0%;
   background-color: #ffffff17;
 }
-
 .listItems {
   cursor: pointer;
   display: flex;
@@ -98,10 +88,8 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-
 .listWrapper {
   min-height: 400px;
   margin: 2%;
 }
-
 </style>
