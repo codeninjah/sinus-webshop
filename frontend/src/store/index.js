@@ -4,6 +4,9 @@ import axios from "axios";
 import { setToken } from "@/api/index.js";
 import { LOGIN_URL, REGISTER_URL, USER_URL } from "@/api/index.js";
 import { get, post } from "@/api/index.js";
+//import VueRouter from 'vue-router';
+
+
 
 Vue.use(Vuex);
 const defaultUser = {
@@ -22,6 +25,7 @@ export default new Vuex.Store({
     products: [],
     cart: [],
     user: defaultUser,
+    final:[]
   },
 
   getters: {
@@ -31,10 +35,19 @@ export default new Vuex.Store({
     getCartLength: (state) => state.cart.length,
     getCart: (state) => state.cart,
 
+    getFinal: (state) =>  {
+      console.log(state.final)
+     return state.final
+     
+    },
+    
+    
     //user stuff
     getUser(state) {
       return state.user;
     },
+    
+
   },
 
   mutations: {
@@ -48,7 +61,17 @@ export default new Vuex.Store({
     CURRENT_USER(state, payload) {
       state.user = payload;
     },
+
+    getFinal(state, final){
+      state.final = final
+      
+    }
+
+   
   },
+
+
+
   actions: {
     getProducts({ commit }) {
       axios
@@ -63,6 +86,30 @@ export default new Vuex.Store({
     addToCart({ commit }, payload) {
       commit("ADD_TO_CART", payload);
     },
+
+    //Jobbar med att få fram nummer av varje enskilt produkt
+    finalSum({commit}) {
+        
+        let gear = this.state.cart//context.getters.getCart //Här måste det ändras för att få fram cart
+       
+        let sum = []
+       for(let i=0; i<gear.length; i++){
+        // let count = i + ": " + loot[i].price;
+        let count = gear[i].price;
+        sum.push(count)
+        let final = sum.reduce((a, b) => a + b, 0)
+        
+        commit("getFinal", final)
+        
+      } 
+        
+    },
+        
+        
+        
+        
+        
+        
 
     //HÄR BÖRJAR JAG SKISSA PÅ ATT FÅ FRAM INLOGGAD USER
     checkLocalstorage(context) {
@@ -90,6 +137,7 @@ export default new Vuex.Store({
 
         localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(userDB));
+        //this.$router.push("/myaccount");
       }
     },
     async registerUser(context, newUser) {
@@ -100,7 +148,10 @@ export default new Vuex.Store({
         alert("Something went wrong");
       }
     },
+
   },
 
-  modules: {},
+  modules: {
+   
+  },
 });
