@@ -1,12 +1,15 @@
 <template>
     <div class="wrapper">
         <div v-if="loggedIn">
-            <button @click="testMe">Test</button>
-            <button @click="loggOut">Logg out</button>
+            <button @click="loggOut">Sign out</button>
             <h1>My Account</h1>
-            <p>Du är inloggad! {{loggedInUserData}}</p>
+            <p></p>
             <p>User Name: {{loggedInUserData.name}}</p>
-            <p>User adress (city): {{loggedInUserData.address.city}}</p>
+            <p>User Role: {{loggedInUserData.role}}</p>
+            <p>User email: (email): {{loggedInUserData.email}}</p>
+            <p>User (city): {{loggedInUserData.address.city}}</p>
+            <p>User (zip): {{loggedInUserData.address.zip}}</p>
+            <p>User (street): {{loggedInUserData.address.street}}</p>
         </div>
         <div v-if="!loggedIn">
             <h1>Du är inte inloggad!</h1>

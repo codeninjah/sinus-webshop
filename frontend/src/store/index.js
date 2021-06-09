@@ -87,10 +87,10 @@ export default new Vuex.Store({
       commit("ADD_TO_CART", payload);
     },
 
-    //Jobbar med att få fram nummer av varje enskilt produkt
+    //Summa av alla varor funktion.
     finalSum({commit}) {
         
-        let gear = this.state.cart//context.getters.getCart //Här måste det ändras för att få fram cart
+        let gear = this.state.cart
        
         let sum = []
        for(let i=0; i<gear.length; i++){
@@ -102,7 +102,7 @@ export default new Vuex.Store({
         commit("getFinal", final)
         
       } 
-        
+  
     },
         
         
