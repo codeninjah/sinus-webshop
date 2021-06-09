@@ -25,6 +25,7 @@ export default new Vuex.Store({
     products: [],
     cart: [],
     user: defaultUser,
+    final:[]
   },
 
   getters: {
@@ -33,11 +34,19 @@ export default new Vuex.Store({
     },
     getCartLength: (state) => state.cart.length,
     getCart: (state) => state.cart,
+
+    getFinal: (state) =>  {
+      console.log(state.final)
+     return state.final
+     
+    },
+    
     
     //user stuff
     getUser(state) {
       return state.user;
     },
+    
 
   },
 
@@ -52,7 +61,17 @@ export default new Vuex.Store({
     CURRENT_USER(state, payload) {
       state.user = payload;
     },
+
+    getFinal(state, final){
+      state.final = final
+      
+    }
+
+   
   },
+
+
+
   actions: {
     getProducts({ commit }) {
       axios
@@ -69,19 +88,20 @@ export default new Vuex.Store({
     },
 
     //Jobbar med att få fram nummer av varje enskilt produkt
-    getNumberOfEachProduct(){
+    finalSum({commit}) {
         
-        let loot = this.state.cart//context.getters.getCart //Här måste det ändras för att få fram cart
+        let gear = this.state.cart//context.getters.getCart //Här måste det ändras för att få fram cart
        
         let sum = []
-       for(let i=0; i<loot.length; i++){
+       for(let i=0; i<gear.length; i++){
         // let count = i + ": " + loot[i].price;
-        let count = loot[i].price;
+        let count = gear[i].price;
         sum.push(count)
         let final = sum.reduce((a, b) => a + b, 0)
         
-        console.log(final)
-      }
+        commit("getFinal", final)
+        
+      } 
         
     },
         
