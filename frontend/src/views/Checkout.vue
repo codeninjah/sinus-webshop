@@ -1,26 +1,15 @@
 <template>
     <div class="wrapper">
-<<<<<<< HEAD
-        <h1>These items are in your cart, press purchase to checkout!</h1>
-        <div class="listWrapper">
-        <ul class="imglist">
-=======
         <h1>Checkout vyn</h1>
         <div class="listWrapper">
         <ul class="imgList">
->>>>>>> 030f38522560f98c1ad44bfedcfd7d25efc86ddd
             <li class="listItems" v-for="product in getCart"
                 :key="product.id">
                 {{product.title}}
                 {{product.price}}
-<<<<<<< HEAD
-            <img :src="require(`@/assets/${product.imgFile}`)" />
-                
-=======
 
                 
             <img :src="require(`@/assets/${product.imgFile}`)" />
->>>>>>> 030f38522560f98c1ad44bfedcfd7d25efc86ddd
             </li>
         </ul>
         </div>
@@ -29,9 +18,6 @@
         <button class="checkoutBtn" @click="countProducts">Summarize</button>
        
         </div>
-<<<<<<< HEAD
-        <p>Your sum total is ...</p>
-=======
          <p>
             {{getFinal}}
              </p>
@@ -41,7 +27,6 @@
         
         
         
->>>>>>> 030f38522560f98c1ad44bfedcfd7d25efc86ddd
     </div>
     
 </template>
@@ -87,11 +72,7 @@ export default {
         margin-left: 39px;
 }
 
-<<<<<<< HEAD
-.imglist {
-=======
 .imgList {
->>>>>>> 030f38522560f98c1ad44bfedcfd7d25efc86ddd
   display: flex;
   flex-direction: row;
   height: 400px;
