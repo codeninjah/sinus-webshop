@@ -41,6 +41,12 @@ export default new Vuex.Store({
      return state.final
      
     },
+
+    // getOrder: (state) =>  {
+    //   console.log(state.orderHistory)
+    //  return state.orderHistory
+     
+    // },
     
     
     //user stuff
@@ -66,7 +72,10 @@ export default new Vuex.Store({
     getFinal(state, final){
       state.final = final
       
-    }
+    },
+    // getOrder(state, orderHistory){
+    //   state.orderHistory = orderHistory
+    // }
 
    
   },
@@ -92,7 +101,8 @@ export default new Vuex.Store({
       const response = await get(ORDER_URL);
       context.state.orderHistory = response;
     },
-        
+
+    
 
     //Summa av alla varor funktion.
     finalSum({commit}) {
