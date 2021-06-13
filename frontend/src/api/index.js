@@ -6,8 +6,10 @@ const LOGIN_URL = `${BASE_URL}auth/`;
 
 const USER_URL = `${BASE_URL}me/`;
 
+const ORDER_URL = `${BASE_URL}orders/`;
 
-export {LOGIN_URL, REGISTER_URL, USER_URL};
+
+export {LOGIN_URL, REGISTER_URL, USER_URL, ORDER_URL};
 
 const get = async (url) => {
   try {
@@ -47,10 +49,19 @@ export async function getUser(userToken) {
     }
   }
 
+  const placeNewOrder = async (ORDER_URL, items) => {
+    try {
+      const response = await axios.post(ORDER_URL, items);
+      return response;
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
   const setToken = (token) => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   }
   
-  export { setToken};
+  export { setToken, placeNewOrder};
   export { get, post};

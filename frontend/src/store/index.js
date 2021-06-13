@@ -2,7 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
 import { setToken } from "@/api/index.js";
-import { LOGIN_URL, REGISTER_URL, USER_URL } from "@/api/index.js";
+import { LOGIN_URL, REGISTER_URL, USER_URL, ORDER_URL } from "@/api/index.js";
 import { get, post } from "@/api/index.js";
 //import VueRouter from 'vue-router';
 
@@ -25,7 +25,8 @@ export default new Vuex.Store({
     products: [],
     cart: [],
     user: defaultUser,
-    final:[]
+    final:[],
+    orderHistory:[]
   },
 
   getters: {
@@ -87,6 +88,12 @@ export default new Vuex.Store({
       commit("ADD_TO_CART", payload);
     },
 
+    async orderHistory(context) {
+      const response = await get(ORDER_URL);
+      context.state.orderHistory = response;
+    },
+        
+
     //Summa av alla varor funktion.
     finalSum({commit}) {
         
@@ -104,7 +111,8 @@ export default new Vuex.Store({
       } 
   
     },
-        
+
+    
         
         
         
