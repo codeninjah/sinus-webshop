@@ -2,7 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
 import { setToken } from "@/api/index.js";
-import { LOGIN_URL, REGISTER_URL, USER_URL, ORDER_URL } from "@/api/index.js";
+import { LOGIN_URL, REGISTER_URL, USER_URL, } from "@/api/index.js";
 import { get, post } from "@/api/index.js";
 //import VueRouter from 'vue-router';
 
@@ -17,6 +17,7 @@ const defaultUser = {
     street: "",
     zip: "",
     city: "",
+    
   },
 };
 
@@ -49,6 +50,8 @@ export default new Vuex.Store({
     // },
     
     
+    
+    
     //user stuff
     getUser(state) {
       return state.user;
@@ -77,10 +80,16 @@ export default new Vuex.Store({
     //   state.orderHistory = orderHistory
     // }
 
+    getOrder(state, orderHistory){
+      state.orderHistory = orderHistory
+      
+    }
+    
    
   },
 
-
+// skicka order till databas
+// hämta datan från databasen till frontenden genom defaultUser orderHistory
 
   actions: {
     getProducts({ commit }) {
@@ -97,32 +106,30 @@ export default new Vuex.Store({
       commit("ADD_TO_CART", payload);
     },
 
-    async orderHistory(context) {
-      const response = await get(ORDER_URL);
-      context.state.orderHistory = response;
-    },
-
+   
     
 
     //Summa av alla varor funktion.
     finalSum({commit}) {
-        
-        let gear = this.state.cart
-       
-        let sum = []
-       for(let i=0; i<gear.length; i++){
+      
+      let gear = this.state.cart
+      
+      let sum = []
+      for(let i=0; i<gear.length; i++){
         // let count = i + ": " + loot[i].price;
         let count = gear[i].price;
         sum.push(count)
         let final = sum.reduce((a, b) => a + b, 0)
         
+        this.state.orderHistory.push(count)
+        console.log(this.state.orderHistory, "hej")
         commit("getFinal", final)
         
       } 
   
     },
 
-    
+   
         
         
         
