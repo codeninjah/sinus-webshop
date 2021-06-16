@@ -39,6 +39,7 @@ export default {
     return {
       loggedIn: false,
       loggedInUserData: "",
+      cart: ""
     };
   },
 
@@ -98,6 +99,7 @@ export default {
       if (this.user) {
         return {
           name: this.user.name,
+          orderHistory: this.user.orderHistory
         };
       } else {
         return {};

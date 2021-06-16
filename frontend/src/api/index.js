@@ -11,6 +11,24 @@ const ORDER_URL = `${BASE_URL}orders/`;
 
 export {LOGIN_URL, REGISTER_URL, USER_URL, ORDER_URL};
 
+const setToken = (token) => {
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+}
+export async function getOrders(token) {
+  try {
+    const response = await ORDER_URL.get('/orders', {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+
+    return response.data
+  } catch (e) {
+    return false
+  }
+}
+
+
 const get = async (url) => {
   try {
     const response = await axios.get(url);
@@ -22,11 +40,11 @@ const get = async (url) => {
   }
 }
 
-export async function getUser(userToken) {
+export async function getUser(token) {
     try {
       const response = await BASE_URL.get('/me', {
         headers: {
-          Authorization: `Bearer ${userToken}`
+          Authorization: `Bearer ${token}`
         }
       })
   
@@ -36,6 +54,8 @@ export async function getUser(userToken) {
       return false
     }
   }
+
+  
 
     
   const post = async (url, obj) => {
@@ -59,9 +79,7 @@ export async function getUser(userToken) {
   }
 
 
-  const setToken = (token) => {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-  }
   
+
   export { setToken, placeNewOrder};
   export { get, post};
