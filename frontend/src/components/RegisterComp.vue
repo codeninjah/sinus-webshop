@@ -80,6 +80,7 @@ export default {
           zip: "",
           city: "",
         },
+        orderHistory: []
       },
     };
   },

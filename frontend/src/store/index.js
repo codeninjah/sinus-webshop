@@ -2,7 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
 import { setToken } from "@/api/index.js";
-import { LOGIN_URL, REGISTER_URL, USER_URL, } from "@/api/index.js";
+import { LOGIN_URL, REGISTER_URL, USER_URL } from "@/api/index.js";
 import { get, post } from "@/api/index.js";
 //import VueRouter from 'vue-router';
 
@@ -10,6 +10,7 @@ import { get, post } from "@/api/index.js";
 
 Vue.use(Vuex);
 const defaultUser = {
+  orderHistory:[],
   email: "",
   name: "",
   role: "",
@@ -17,7 +18,6 @@ const defaultUser = {
     street: "",
     zip: "",
     city: "",
-    
   },
 };
 
@@ -39,6 +39,7 @@ export default new Vuex.Store({
 
     getFinal: (state) =>  {
       console.log(state.final)
+      
      return state.final
      
     },
@@ -48,8 +49,6 @@ export default new Vuex.Store({
     //  return state.orderHistory
      
     // },
-    
-    
     
     
     //user stuff
@@ -80,16 +79,10 @@ export default new Vuex.Store({
     //   state.orderHistory = orderHistory
     // }
 
-    getOrder(state, orderHistory){
-      state.orderHistory = orderHistory
-      
-    }
-    
    
   },
 
-// skicka order till databas
-// hämta datan från databasen till frontenden genom defaultUser orderHistory
+
 
   actions: {
     getProducts({ commit }) {
@@ -106,30 +99,29 @@ export default new Vuex.Store({
       commit("ADD_TO_CART", payload);
     },
 
-   
+    
     
 
     //Summa av alla varor funktion.
     finalSum({commit}) {
-      
-      let gear = this.state.cart
-      
-      let sum = []
-      for(let i=0; i<gear.length; i++){
+        
+        let gear = this.state.cart
+       
+        let sum = []
+       for(let i=0; i<gear.length; i++){
         // let count = i + ": " + loot[i].price;
         let count = gear[i].price;
         sum.push(count)
         let final = sum.reduce((a, b) => a + b, 0)
         
-        this.state.orderHistory.push(count)
-        console.log(this.state.orderHistory, "hej")
         commit("getFinal", final)
         
       } 
-  
+      this.state.user.orderHistory.push("order " + this.state.final + " kr")
+      console.log(this.state.orderHistory)
     },
 
-   
+    
         
         
         

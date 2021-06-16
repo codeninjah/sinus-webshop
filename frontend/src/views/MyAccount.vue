@@ -11,20 +11,9 @@
           <p>User city: {{ loggedInUserData.address.city }}</p>
           <p>User zip: {{ loggedInUserData.address.zip }}</p>
           <p>User street: {{ loggedInUserData.address.street }}</p>
-          <p class="orderHistory">Order history : {{ $store.state.getHistory }}</p>
+          <p class="orderHistory">Order history : {{ $store.state.user.orderHistory }}</p>
         </li>
       </ul>
-      <ul class="imgList">
-            <li class="listItems" v-for="product in getCart"
-                :key="product.id">
-                
-            </li>
-        </ul>
-
-        
-
-
-        
     </div>
     <div v-if="!loggedIn">
       <h1>Du är inte inloggad!</h1>
@@ -56,13 +45,6 @@ export default {
       this.$router.push("/");
     },
 
-         orderHist(){
-          return this.$store.dispatch("orderHistory") 
-        }
-        
-    
-    
-
     
   },
 
@@ -89,13 +71,11 @@ export default {
     }
   },
 
- 
+  mounted() {
+    this.$store.dispatch('orderHistory');
+  },
 
   computed: {
-
-    getCart(){
-    return this.$store.getters.getCart
-    },
     
     user() {
       return this.$store.getters.user;

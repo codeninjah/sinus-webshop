@@ -15,7 +15,7 @@
         </div>
         <div class="btnWrapper">
 
-        <button class="checkoutBtn" @click="countProducts">Summarize</button>
+        <button class="checkoutBtn" @click="countProducts">Pay</button>
        
         </div>
          <p>
