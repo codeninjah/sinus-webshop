@@ -14,6 +14,17 @@
           <p class="orderHistory">Order history : {{ loggedInUserData.orderHistory }}</p>
         </li>
       </ul>
+      <ul class="imgList">
+            <li class="listItems" v-for="product in getCart"
+                :key="product.id">
+                
+            </li>
+        </ul>
+
+        
+
+
+        
     </div>
     <div v-if="!loggedIn">
       <h1>Du är inte inloggad!</h1>
@@ -45,6 +56,8 @@ export default {
     },
 
     
+
+    
   },
 
   created() {
@@ -70,11 +83,13 @@ export default {
     }
   },
 
-  mounted() {
-    this.$store.dispatch('orderHistory');
-  },
+ 
 
   computed: {
+
+    getCart(){
+    return this.$store.getters.getCart
+    },
     
     user() {
       return this.$store.getters.user;
