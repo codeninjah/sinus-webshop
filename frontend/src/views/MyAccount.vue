@@ -11,7 +11,7 @@
           <p>User city: {{ loggedInUserData.address.city }}</p>
           <p>User zip: {{ loggedInUserData.address.zip }}</p>
           <p>User street: {{ loggedInUserData.address.street }}</p>
-          <p class="orderHistory">Order history : {{ loggedInUserData.orderHistory }}</p>
+          <p class="orderHistory">Order history : {{ $store.state.getHistory }}</p>
         </li>
       </ul>
     </div>
@@ -45,6 +45,11 @@ export default {
       this.$router.push("/");
     },
 
+         orderHist(){
+          return this.$store.dispatch("orderHistory") 
+        }
+        
+    
     
   },
 
